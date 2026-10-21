@@ -1,0 +1,1457 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareerPath | Student Career Preparation Platform</title>
+  <meta name="description"
+    content="Learn essential skills, practice coding, build projects, improve your resume, and prepare for your dream job—all in one platform." />
+
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233B82F6'><path d='M12 2L1 7l11 5 9-4.09V17h2V7L12 2z'/></svg>"
+    type="image/svg+xml" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: "#F0F8FF",
+              100: "#EAF6FF",
+              200: "#D6EEFF",
+              300: "#B8E0FF",
+              400: "#75BFFF",
+              500: "#3B82F6", // Accent Blue
+              600: "#2563EB",
+              700: "#1D4ED8",
+              navy: "#1E293B", // Dark Navy
+              dark: "#0F172A",
+              card: "#FFFFFF",
+            },
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+            mono: ['"JetBrains Mono"', "monospace"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body
+  class="bg-gradient-to-b from-[#F0F8FF] via-[#EAF6FF] to-white text-[#1E293B] min-h-screen antialiased flex flex-col selection:bg-blue-100 selection:text-blue-900">
+  <!-- ========================================================================= -->
+  <!-- 1. STICKY NAVBAR -->
+  <!-- ========================================================================= -->
+  <header id="navbar" class="sticky top-0 z-50 glass-nav border-b border-blue-100/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Brand Logo & Name -->
+        <a href="#home"
+          class="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-xl p-1"
+          aria-label="CareerPath Home">
+          <div
+            class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-blue-600 via-blue-500 to-sky-400 flex items-center justify-center text-white shadow-md shadow-blue-500/25 group-hover:scale-105 group-hover:shadow-blue-500/40 transition-all duration-300">
+            <i data-lucide="compass" class="w-6 h-6 stroke-[2.2]"></i>
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-center space-x-1.5">
+              <span class="text-2xl font-extrabold tracking-tight text-[#1E293B]">Career<span
+                  class="text-blue-600">Path</span></span>
+              <span
+                class="px-2 py-0.5 text-[10px] uppercase font-bold tracking-wider bg-blue-100 text-blue-700 rounded-full border border-blue-200">Student</span>
+            </div>
+            <span class="text-[11px] font-medium text-slate-500 tracking-wide">Campus to Career Platform</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links (All 8 Modules) -->
+        <nav class="hidden xl:flex items-center space-x-1" aria-label="Main Navigation">
+          <a href="#home"
+            class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors">Home</a>
+          <!-- <a href="#career-paths" class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors">Career Paths</a>
+          <a href="#learn-skills" class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors">Learn Skills</a>
+          <a href="#practice" class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors">Practice</a>
+          <a href="#projects" class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors">Projects</a>
+          <a href="#resume-analyzer" class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors">Resume Analyzer</a>
+          <a href="#interview-prep" class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors">Interview Prep</a> -->
+          <a href="#dashboard"
+            class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors flex items-center space-x-1.5">
+            <span>Dashboard</span>
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          </a>
+        </nav>
+
+        <!-- Medium Screen Nav dropdown / Compact view -->
+        <div class="hidden lg:flex xl:hidden items-center space-x-2">
+          <a href="#home"
+            class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50">Home</a>
+          <a href="#career-paths"
+            class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50">Paths</a>
+          <a href="#learn-skills"
+            class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50">Skills</a>
+          <a href="#projects"
+            class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50">Projects</a>
+          <a href="#dashboard"
+            class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-200">Dashboard</a>
+        </div>
+
+        <!-- Auth CTA Buttons -->
+        <div class="hidden sm:flex items-center space-x-3">
+          <button type="button"
+            class="btn-trigger-login px-4 py-2 text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50/70 border border-blue-200/90 rounded-xl transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            Log In
+          </button>
+          <button type="button"
+            class="btn-trigger-signup px-5 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-500/25 rounded-xl transition duration-200 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center space-x-1.5">
+            <span>Sign Up</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <div class="flex xl:hidden items-center space-x-2">
+          <button type="button"
+            class="btn-trigger-login sm:hidden px-3 py-1.5 text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-200 rounded-lg">
+            Log In
+          </button>
+          <button id="mobile-menu-toggle" type="button"
+            class="p-2.5 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-blue-50 border border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            aria-label="Open Navigation Menu">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Responsive Mobile Hamburger Drawer -->
+    <div id="mobile-menu"
+      class="hidden xl:hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm transition-opacity" role="dialog"
+      aria-modal="true">
+      <div
+        class="fixed inset-y-0 right-0 max-w-xs w-full bg-white shadow-2xl p-6 flex flex-col justify-between overflow-y-auto border-l border-blue-100">
+        <div>
+          <!-- Header in drawer -->
+          <div class="flex items-center justify-between pb-5 border-b border-blue-100">
+            <div class="flex items-center space-x-2">
+              <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white">
+                <i data-lucide="compass" class="w-5 h-5"></i>
+              </div>
+              <span class="text-lg font-bold text-slate-800">Career<span class="text-blue-600">Path</span></span>
+            </div>
+            <button id="mobile-menu-close"
+              class="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <!-- Nav list -->
+          <nav class="mt-6 flex flex-col space-y-1.5">
+            <a href="#home"
+              class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition">
+              <i data-lucide="home" class="w-4 h-4 text-blue-500"></i>
+              <span>Home</span>
+            </a>
+            <a href="#career-paths"
+              class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition">
+              <i data-lucide="map" class="w-4 h-4 text-blue-500"></i>
+              <span>Career Paths</span>
+            </a>
+            <a href="#learn-skills"
+              class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition">
+              <i data-lucide="book-open" class="w-4 h-4 text-blue-500"></i>
+              <span>Learn Skills</span>
+            </a>
+            <a href="#practice"
+              class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition">
+              <i data-lucide="code-2" class="w-4 h-4 text-blue-500"></i>
+              <span>Practice Coding</span>
+            </a>
+            <a href="#projects"
+              class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition">
+              <i data-lucide="folder-git-2" class="w-4 h-4 text-blue-500"></i>
+              <span>Projects</span>
+            </a>
+            <a href="#resume-analyzer"
+              class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition">
+              <i data-lucide="file-check" class="w-4 h-4 text-blue-500"></i>
+              <span>Resume Analyzer</span>
+            </a>
+            <a href="#interview-prep"
+              class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition">
+              <i data-lucide="messages-square" class="w-4 h-4 text-blue-500"></i>
+              <span>Interview Prep</span>
+            </a>
+            <a href="#dashboard"
+              class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-xl text-blue-600 font-semibold bg-blue-50 border border-blue-200">
+              <div class="flex items-center space-x-3">
+                <i data-lucide="layout-dashboard" class="w-4 h-4 text-blue-600"></i>
+                <span>Student Dashboard</span>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            </a>
+          </nav>
+        </div>
+
+        <!-- Auth buttons in drawer -->
+        <div class="pt-6 border-t border-blue-100 flex flex-col space-y-3">
+          <button type="button"
+            class="btn-trigger-login w-full py-2.5 text-center font-semibold text-slate-700 border border-blue-200 rounded-xl hover:bg-blue-50">
+            Log In
+          </button>
+          <button type="button"
+            class="btn-trigger-signup w-full py-2.5 text-center font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-md shadow-blue-500/20">
+            Sign Up Free
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- 2. HERO SECTION -->
+  <!-- ========================================================================= -->
+  <section id="home" class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden bg-mesh-subtle">
+    <!-- Background glowing ambient effects -->
+    <div
+      class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-blue-200/40 rounded-full blur-3xl pointer-events-none -z-10">
+    </div>
+    <div class="absolute top-10 right-10 w-72 h-72 bg-sky-200/30 rounded-full blur-2xl pointer-events-none -z-10"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <!-- Left Column: Copy & CTA -->
+        <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+          <!-- Announcement Pill -->
+          <div
+            class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-blue-200 shadow-sm text-xs font-semibold text-blue-700">
+            <span class="flex h-2 w-2 rounded-full bg-blue-500 animate-ping"></span>
+            <span>2027 Campus Placement Prep is Live</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-blue-500"></i>
+          </div>
+
+          <!-- Main Heading -->
+          <h1 class="text-4xl sm:text-5xl lg:text-[3.4rem] font-extrabold text-[#1E293B] leading-[1.15] tracking-tight">
+            Your Journey from
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-500">Student</span>
+            to
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-600">Job-Ready</span>
+            Starts Here
+          </h1>
+
+          <!-- Description -->
+          <p class="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+            Learn essential skills, practice coding, build projects, improve
+            your resume, and prepare for your dream job—all in one platform.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <button type="button"
+              class="btn-trigger-signup w-full sm:w-auto px-7 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-lg shadow-blue-500/30 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-2 group">
+              <span>Get Started</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+            <a href="#career-paths"
+              class="w-full sm:w-auto px-7 py-3.5 bg-white hover:bg-blue-50/80 text-slate-800 hover:text-blue-600 font-bold rounded-2xl border border-blue-200 shadow-sm hover:border-blue-400 transition-all duration-200 flex items-center justify-center space-x-2">
+              <i data-lucide="compass" class="w-4 h-4 text-blue-600"></i>
+              <span>Explore Career Paths</span>
+            </a>
+          </div>
+
+          <!-- Trust Proof / Metric Snippet -->
+          <div
+            class="pt-6 border-t border-blue-100/90 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-left">
+            <div class="flex items-center -space-x-2">
+              <div
+                class="w-9 h-9 rounded-full ring-2 ring-white bg-blue-500 text-white font-bold text-xs flex items-center justify-center shadow">
+                AK
+              </div>
+              <div
+                class="w-9 h-9 rounded-full ring-2 ring-white bg-indigo-500 text-white font-bold text-xs flex items-center justify-center shadow">
+                SP
+              </div>
+              <div
+                class="w-9 h-9 rounded-full ring-2 ring-white bg-sky-500 text-white font-bold text-xs flex items-center justify-center shadow">
+                RM
+              </div>
+              <div
+                class="w-9 h-9 rounded-full ring-2 ring-white bg-emerald-500 text-white font-bold text-xs flex items-center justify-center shadow">
+                TJ
+              </div>
+              <div
+                class="w-9 h-9 rounded-full ring-2 ring-white bg-slate-800 text-white font-bold text-[10px] flex items-center justify-center shadow">
+                +25k
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center text-amber-400 text-xs">
+                <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                <span class="ml-1.5 font-bold text-slate-800 text-sm">4.9/5</span>
+              </div>
+              <p class="text-xs text-slate-500 font-medium">
+                Trusted by 25,000+ Students across 150+ Universities
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Student Learning & Dashboard Illustration -->
+        <div class="lg:col-span-6 relative">
+          <!-- Outer Decorative Container -->
+          <div class="relative mx-auto max-w-lg lg:max-w-none">
+            <!-- Glow background -->
+            <div
+              class="absolute -inset-1.5 bg-gradient-to-r from-blue-300 via-sky-200 to-blue-400 rounded-3xl blur-xl opacity-50">
+            </div>
+
+            <!-- Main Illustration Card Container -->
+            <div class="relative rounded-3xl bg-white/95 p-3 sm:p-4 shadow-2xl border border-blue-100 backdrop-blur-sm">
+              <div
+                class="relative overflow-hidden rounded-2xl bg-gradient-to-b from-blue-50/50 to-white aspect-[4/3] flex items-center justify-center">
+                <img src="./assets/hero_student_dashboard.jpg"
+                  alt="Student coding and career preparation dashboard illustration"
+                  class="w-full h-full object-cover rounded-2xl transition duration-500 hover:scale-[1.02]"
+                  loading="eager" />
+
+                <!-- Glass Overlay Overlay Badge: Live Placement Status -->
+                <div
+                  class="absolute top-4 left-4 glass-card px-3.5 py-2 rounded-xl shadow-lg flex items-center space-x-2.5 animate-float hidden sm:flex">
+                  <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center">
+                    <i data-lucide="trending-up" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+                      Placement Rate
+                    </p>
+                    <p class="text-xs font-extrabold text-slate-800">
+                      94% Hired in 90 Days
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Glass Overlay Badge: Resume Score -->
+                <div
+                  class="absolute bottom-4 right-4 glass-card px-3.5 py-2.5 rounded-xl shadow-lg flex items-center space-x-2.5 animate-float-delayed">
+                  <div
+                    class="w-8 h-8 rounded-lg bg-blue-600/10 text-blue-600 flex items-center justify-center font-bold text-xs">
+                    92
+                  </div>
+                  <div>
+                    <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+                      ATS Resume Score
+                    </p>
+                    <p class="text-xs font-extrabold text-slate-800">
+                      Top 5% Candidate
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating mini-badge bottom left -->
+            <div
+              class="absolute -bottom-5 -left-4 sm:left-4 bg-white px-4 py-2.5 rounded-2xl shadow-xl border border-blue-100 flex items-center space-x-3">
+              <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span>
+              <div>
+                <span class="text-xs font-bold text-slate-800">500+ Practice Problems</span>
+                <p class="text-[10px] text-slate-500">
+                  Curated for 2027 Tech Interviews
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 3. PLATFORM MODULES (Overview Cards for all requested sections) -->
+  <!-- ========================================================================= -->
+  <section id="modules" class="py-16 md:py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <span
+          class="px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 rounded-full border border-blue-200">
+          Everything You Need to Get Hired
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E293B] tracking-tight">
+          Comprehensive Modules Designed for Student Success
+        </h2>
+        <p class="text-slate-600 text-base sm:text-lg">
+          Master the exact technical and interview skills demanded by top tech
+          companies, from your very first coding exercise to your final offer.
+        </p>
+      </div>
+
+      <!-- Feature Cards Grid (6 Modules) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Card 1: Career Paths (#career-paths) -->
+        <article id="career-paths"
+          class="group bg-white rounded-2xl p-7 border border-blue-100 hover:border-blue-300 shadow-card shadow-soft-hover transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div
+              class="w-13 h-13 w-fit p-3.5 rounded-2xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 mb-6 border border-blue-100">
+              <i data-lucide="map" class="w-7 h-7"></i>
+            </div>
+            <div class="flex items-center space-x-2 mb-2">
+              <span
+                class="text-[11px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">Roadmaps</span>
+              <span class="text-xs text-slate-400">Beginner to Pro</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#1E293B] group-hover:text-blue-600 transition-colors">
+              Guided Career Paths
+            </h3>
+            <p class="text-slate-600 text-sm mt-2.5 leading-relaxed">
+              Step-by-step verified roadmaps for Full-Stack, AI & Data
+              Science, Cloud DevOps, and Mobile Engineering tailored for
+              college semesters.
+            </p>
+            <ul class="mt-4 space-y-2 text-xs text-slate-600">
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                Semester-by-semester milestone checklists
+              </li>
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                Industry-vetted technology stacks
+              </li>
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                Role-specific salary & hiring outlook
+              </li>
+            </ul>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-100">
+            <a href="#dashboard"
+              class="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-700 group/link">
+              <span>Explore Career Tracks</span>
+              <i data-lucide="arrow-right"
+                class="w-4 h-4 ml-1.5 group-hover/link:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 2: Learn Skills (#learn-skills) -->
+        <article id="learn-skills"
+          class="group bg-white rounded-2xl p-7 border border-blue-100 hover:border-blue-300 shadow-card shadow-soft-hover transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div
+              class="w-13 h-13 w-fit p-3.5 rounded-2xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 mb-6 border border-blue-100">
+              <i data-lucide="book-open" class="w-7 h-7"></i>
+            </div>
+            <div class="flex items-center space-x-2 mb-2">
+              <span
+                class="text-[11px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">Interactive
+                Courses</span>
+              <span class="text-xs text-slate-400">Micro-Lessons</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#1E293B] group-hover:text-blue-600 transition-colors">
+              Learn In-Demand Skills
+            </h3>
+            <p class="text-slate-600 text-sm mt-2.5 leading-relaxed">
+              Bite-sized interactive learning modules covering modern
+              languages, frameworks, system design, databases, and clean code
+              principles.
+            </p>
+            <ul class="mt-4 space-y-2 text-xs text-slate-600">
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                10-15 min daily micro-lessons with code sandboxes
+              </li>
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                Verified skill credentials & LinkedIn badges
+              </li>
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                Quizzes with automated conceptual feedback
+              </li>
+            </ul>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-100">
+            <button type="button" onclick="
+                  showToast(
+                    'Learn Skills',
+                    'Opening interactive catalog with 40+ student modules',
+                    'book-open',
+                  )
+                " class="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-700 group/link">
+              <span>Browse Skill Catalog</span>
+              <i data-lucide="arrow-right"
+                class="w-4 h-4 ml-1.5 group-hover/link:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 3: Practice (#practice) -->
+        <article id="practice"
+          class="group bg-white rounded-2xl p-7 border border-blue-100 hover:border-blue-300 shadow-card shadow-soft-hover transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div
+              class="w-13 h-13 w-fit p-3.5 rounded-2xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 mb-6 border border-blue-100">
+              <i data-lucide="code-2" class="w-7 h-7"></i>
+            </div>
+            <div class="flex items-center space-x-2 mb-2">
+              <span
+                class="text-[11px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">Coding
+                Sandbox</span>
+              <span class="text-xs text-slate-400">500+ Challenges</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#1E293B] group-hover:text-blue-600 transition-colors">
+              Hands-On Code Practice
+            </h3>
+            <p class="text-slate-600 text-sm mt-2.5 leading-relaxed">
+              Ace data structures, algorithms, and SQL with curated coding
+              challenges categorized by company tags (Google, Amazon,
+              Microsoft).
+            </p>
+            <ul class="mt-4 space-y-2 text-xs text-slate-600">
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                In-browser IDE supporting Python, JS, C++, Java
+              </li>
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                Step-by-step algorithmic visualizations
+              </li>
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                Time & space complexity benchmarks
+              </li>
+            </ul>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-100">
+            <button type="button" onclick="
+                  showToast(
+                    'Practice Arena',
+                    'Launching coding sandbox with daily DSA challenge',
+                    'terminal',
+                  )
+                " class="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-700 group/link">
+              <span>Start Daily Challenge</span>
+              <i data-lucide="arrow-right"
+                class="w-4 h-4 ml-1.5 group-hover/link:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 4: Projects (#projects) -->
+        <article id="projects"
+          class="group bg-white rounded-2xl p-7 border border-blue-100 hover:border-blue-300 shadow-card shadow-soft-hover transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div
+              class="w-13 h-13 w-fit p-3.5 rounded-2xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 mb-6 border border-blue-100">
+              <i data-lucide="folder-git-2" class="w-7 h-7"></i>
+            </div>
+            <div class="flex items-center space-x-2 mb-2">
+              <span
+                class="text-[11px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">Portfolio
+                Builders</span>
+              <span class="text-xs text-slate-400">Production-Grade</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#1E293B] group-hover:text-blue-600 transition-colors">
+              Real-World Capstone Projects
+            </h3>
+            <p class="text-slate-600 text-sm mt-2.5 leading-relaxed">
+              Build full-stack applications with auth, payment gateways, and
+              databases that recruiters actually test and praise on GitHub.
+            </p>
+            <ul class="mt-4 space-y-2 text-xs text-slate-600">
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                Architecture guides & clean starter boilerplate
+              </li>
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                Automated code reviews & security scanning
+              </li>
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                1-click deployment to Vercel and Railway
+              </li>
+            </ul>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-100">
+            <button type="button" onclick="
+                  showToast(
+                    'Project Hub',
+                    'Accessing 24 verified portfolio projects with specs',
+                    'folder-check',
+                  )
+                " class="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-700 group/link">
+              <span>View Project Blueprints</span>
+              <i data-lucide="arrow-right"
+                class="w-4 h-4 ml-1.5 group-hover/link:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 5: Resume Analyzer (#resume-analyzer) -->
+        <article id="resume-analyzer"
+          class="group bg-white rounded-2xl p-7 border border-blue-100 hover:border-blue-300 shadow-card shadow-soft-hover transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div
+              class="w-13 h-13 w-fit p-3.5 rounded-2xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 mb-6 border border-blue-100">
+              <i data-lucide="file-check" class="w-7 h-7"></i>
+            </div>
+            <div class="flex items-center space-x-2 mb-2">
+              <span
+                class="text-[11px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">AI
+                ATS Scanner</span>
+              <span class="text-xs text-slate-400">Instant Score</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#1E293B] group-hover:text-blue-600 transition-colors">
+              AI Resume Analyzer
+            </h3>
+            <p class="text-slate-600 text-sm mt-2.5 leading-relaxed">
+              Upload your resume for instant AI scoring, keyword matching for
+              specific internships, formatting audits, and bullet-point
+              rewrites.
+            </p>
+            <ul class="mt-4 space-y-2 text-xs text-slate-600">
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                ATS compatibility check against 50+ parsers
+              </li>
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                Action-verb suggestions with measurable metrics
+              </li>
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                Role-tailored tech keyword suggestions
+              </li>
+            </ul>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-100">
+            <button type="button" onclick="
+                  showToast(
+                    'Resume Analyzer',
+                    'Upload modal ready. Max file size: 10MB PDF/DOCX',
+                    'upload-cloud',
+                  )
+                " class="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-700 group/link">
+              <span>Scan Your Resume Free</span>
+              <i data-lucide="arrow-right"
+                class="w-4 h-4 ml-1.5 group-hover/link:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 6: Interview Prep (#interview-prep) -->
+        <article id="interview-prep"
+          class="group bg-white rounded-2xl p-7 border border-blue-100 hover:border-blue-300 shadow-card shadow-soft-hover transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div
+              class="w-13 h-13 w-fit p-3.5 rounded-2xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 mb-6 border border-blue-100">
+              <i data-lucide="messages-square" class="w-7 h-7"></i>
+            </div>
+            <div class="flex items-center space-x-2 mb-2">
+              <span
+                class="text-[11px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">Mock
+                Interviews</span>
+              <span class="text-xs text-slate-400">Behavioral & Tech</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#1E293B] group-hover:text-blue-600 transition-colors">
+              Interview Simulator
+            </h3>
+            <p class="text-slate-600 text-sm mt-2.5 leading-relaxed">
+              Practice real questions asked at top tech companies with AI
+              video/audio feedback, STAR method coaching, and peer mock
+              interviews.
+            </p>
+            <ul class="mt-4 space-y-2 text-xs text-slate-600">
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                200+ HR & behavioral questions with model answers
+              </li>
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                Live coding whiteboard with AI interviewer
+              </li>
+              <li class="flex items-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2"></i>
+                Confidence, pace, and clarity scoring
+              </li>
+            </ul>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-100">
+            <button type="button" onclick="
+                  showToast(
+                    'Mock Interview',
+                    'Connecting to AI Interview coach simulator...',
+                    'mic',
+                  )
+                " class="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-700 group/link">
+              <span>Start Mock Interview</span>
+              <i data-lucide="arrow-right"
+                class="w-4 h-4 ml-1.5 group-hover/link:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 4. DASHBOARD PREVIEW SECTION (#dashboard) -->
+  <!-- ========================================================================= -->
+  <section id="dashboard" class="py-16 md:py-24 bg-gradient-to-b from-[#EAF6FF]/80 via-[#D6EEFF]/40 to-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Dashboard Section Title -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <div
+            class="inline-flex items-center space-x-2 text-xs font-bold text-blue-700 bg-white px-3 py-1 rounded-full border border-blue-200 mb-2 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span>Live Student Dashboard Preview</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E293B] tracking-tight">
+            Your Personalized Career Command Center
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base mt-1">
+            Track your weekly study hours, completed skills, capstone
+            projects, and AI-recommended next steps.
+          </p>
+        </div>
+
+        <!-- Student Profile Pill & Interactive Career Track Selector -->
+        <div class="flex flex-wrap items-center gap-2 bg-white p-1.5 rounded-2xl border border-blue-200/80 shadow-sm">
+          <button type="button" data-track="fullstack"
+            class="track-switch-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-blue-600 text-white shadow-sm transition-all duration-200">
+            Full Stack Web Dev
+          </button>
+          <button type="button" data-track="ai"
+            class="track-switch-btn px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-blue-50 transition-all duration-200">
+            AI & Data Science
+          </button>
+          <button type="button" data-track="cloud"
+            class="track-switch-btn px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-blue-50 transition-all duration-200">
+            Cloud & DevOps
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Dashboard Grid Container (White Cards, Light Blue Accents) -->
+      <div
+        class="bg-white/80 backdrop-blur-md rounded-3xl p-5 sm:p-7 lg:p-8 border border-blue-200/90 shadow-2xl space-y-6">
+        <!-- Dashboard Top Banner: Student Header & High-Level Stats -->
+        <div
+          class="flex flex-col lg:flex-row items-start lg:items-center justify-between pb-6 border-b border-blue-100 gap-4">
+          <div class="flex items-center space-x-4">
+            <div class="relative">
+              <div
+                class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-sky-400 text-white font-bold text-xl flex items-center justify-center shadow-md shadow-blue-500/20">
+                AC
+              </div>
+              <span class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full"
+                title="Online & active"></span>
+            </div>
+            <div>
+              <div class="flex items-center space-x-2">
+                <h3 class="text-lg font-bold text-[#1E293B]">Alex Chen</h3>
+                <span
+                  class="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-blue-100 text-blue-700 border border-blue-200">B.Tech
+                  CS &apos;27</span>
+              </div>
+              <p id="dash-track-title" class="text-xs text-slate-500 font-medium mt-0.5">
+                Full Stack Web Developer Track
+              </p>
+            </div>
+          </div>
+
+          <!-- Quick Micro Badges (Streak, XP, Level) -->
+          <div class="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+            <div
+              class="flex-1 sm:flex-initial flex items-center space-x-2.5 bg-blue-50/70 border border-blue-100 px-3.5 py-2 rounded-xl">
+              <div class="w-7 h-7 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center">
+                <i data-lucide="flame" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <p class="text-[10px] uppercase font-bold text-slate-400">
+                  Daily Streak
+                </p>
+                <p id="dash-streak-count" class="text-xs font-bold text-slate-800">
+                  14 Days
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex-1 sm:flex-initial flex items-center space-x-2.5 bg-blue-50/70 border border-blue-100 px-3.5 py-2 rounded-xl">
+              <div class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                <i data-lucide="zap" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <p class="text-[10px] uppercase font-bold text-slate-400">
+                  Total XP
+                </p>
+                <p id="dash-xp-count" class="text-xs font-bold text-slate-800">
+                  1,420 XP
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex-1 sm:flex-initial flex items-center space-x-2.5 bg-blue-50/70 border border-blue-100 px-3.5 py-2 rounded-xl">
+              <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                <i data-lucide="award" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <p class="text-[10px] uppercase font-bold text-slate-400">
+                  Tier
+                </p>
+                <p id="dash-level-text" class="text-xs font-bold text-slate-800">
+                  Level 4
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Multi-Card Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- ============================================ -->
+          <!-- Card A: Overall Learning Progress (4 cols) -->
+          <!-- ============================================ -->
+          <div
+            class="lg:col-span-4 bg-white rounded-2xl p-6 border border-blue-100 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Learning Progress</span>
+                <span
+                  class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">On
+                  Track</span>
+              </div>
+
+              <!-- Circular Progress Widget & Percentage -->
+              <div class="flex flex-col items-center justify-center my-4">
+                <div class="relative w-36 h-36 flex items-center justify-center">
+                  <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="42" stroke="#E2E8F0" stroke-width="8" fill="transparent" />
+                    <circle id="dash-progress-circle" cx="50" cy="50" r="42" stroke="#3B82F6" stroke-width="8"
+                      stroke-dasharray="264" stroke-dashoffset="84" stroke-linecap="round" fill="transparent"
+                      class="transition-all duration-1000 ease-out" />
+                  </svg>
+                  <div class="absolute flex flex-col items-center justify-center">
+                    <span id="dash-progress-text" class="text-3xl font-extrabold text-[#1E293B]">68%</span>
+                    <span class="text-[11px] text-slate-500 font-medium">Job-Ready</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Selected Career Path Status -->
+              <div class="mt-4 p-3.5 bg-blue-50/60 rounded-xl border border-blue-100">
+                <div class="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1">
+                  <span>Selected Career Track</span>
+                  <span class="text-blue-600 font-bold">Active</span>
+                </div>
+                <p id="dash-track-phase" class="text-xs text-slate-600 font-medium">
+                  Phase 3 of 4: Backend Architecture & APIs
+                </p>
+                <div class="w-full bg-blue-200/80 h-2 rounded-full mt-2.5 overflow-hidden">
+                  <div id="dash-progress-bar" class="bg-blue-600 h-2 rounded-full progress-bar-fill" style="width: 68%">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mini CTA -->
+            <button type="button" onclick="
+                  showToast(
+                    'Curriculum Map',
+                    'Opening full syllabus and milestone breakdown',
+                    'map',
+                  )
+                "
+              class="w-full mt-4 py-2.5 px-3 rounded-xl bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-600 text-xs font-bold border border-slate-200/90 transition text-center flex items-center justify-center space-x-1.5">
+              <span>View Milestone Breakdown</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+          <!-- ============================================ -->
+          <!-- Card B: Skills Completed (4 cols) -->
+          <!-- ============================================ -->
+          <div
+            class="lg:col-span-4 bg-white rounded-2xl p-6 border border-blue-100 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                  <div class="w-6 h-6 rounded-md bg-blue-100 text-blue-600 flex items-center justify-center">
+                    <i data-lucide="check-square" class="w-3.5 h-3.5"></i>
+                  </div>
+                  <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Skills Completed</span>
+                </div>
+                <span id="dash-skills-count" class="text-xs font-bold text-blue-600">14 / 20 Skills Mastered</span>
+              </div>
+
+              <!-- Dynamic Skills List -->
+              <div id="dash-skills-list" class="space-y-2.5">
+                <!-- Rendered dynamically via JavaScript -->
+              </div>
+            </div>
+
+            <button type="button" onclick="
+                  showToast(
+                    'Skill Assessment',
+                    'Launch skill verification exam for LinkedIn badge',
+                    'award',
+                  )
+                "
+              class="w-full mt-4 py-2.5 px-3 rounded-xl bg-blue-50 hover:bg-blue-100/80 text-blue-700 text-xs font-bold border border-blue-200 transition text-center flex items-center justify-center space-x-1.5">
+              <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
+              <span>Take Next Skill Assessment</span>
+            </button>
+          </div>
+
+          <!-- ============================================ -->
+          <!-- Card C: Projects Completed (4 cols) -->
+          <!-- ============================================ -->
+          <div
+            class="lg:col-span-4 bg-white rounded-2xl p-6 border border-blue-100 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                  <div class="w-6 h-6 rounded-md bg-sky-100 text-sky-600 flex items-center justify-center">
+                    <i data-lucide="folder-code" class="w-3.5 h-3.5"></i>
+                  </div>
+                  <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Projects Completed</span>
+                </div>
+                <span id="dash-projects-count" class="text-xs font-bold text-slate-600">3 / 4 Portfolio Projects</span>
+              </div>
+
+              <!-- Projects List -->
+              <div id="dash-projects-list" class="space-y-2.5">
+                <!-- Rendered dynamically via JavaScript -->
+              </div>
+            </div>
+
+            <button type="button" onclick="
+                  showToast(
+                    'GitHub Verification',
+                    'Syncing portfolio repositories with GitHub API',
+                    'github',
+                  )
+                "
+              class="w-full mt-4 py-2.5 px-3 rounded-xl bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-600 text-xs font-bold border border-slate-200 transition text-center flex items-center justify-center space-x-1.5">
+              <i data-lucide="git-branch" class="w-3.5 h-3.5"></i>
+              <span>Connect GitHub Repository</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dashboard Lower Grid: Weekly Activity & Next Steps -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
+          <!-- ============================================ -->
+          <!-- Weekly Activity Chart (5 cols) -->
+          <!-- ============================================ -->
+          <div
+            class="lg:col-span-5 bg-white rounded-2xl p-6 border border-blue-100 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center space-x-2">
+                  <div class="w-6 h-6 rounded-md bg-blue-100 text-blue-600 flex items-center justify-center">
+                    <i data-lucide="bar-chart-2" class="w-3.5 h-3.5"></i>
+                  </div>
+                  <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Weekly Activity</span>
+                </div>
+                <span id="dash-weekly-total" class="text-xs font-extrabold text-blue-600">26.0 hrs</span>
+              </div>
+              <p id="dash-weekly-target" class="text-xs text-slate-500 mb-6 font-medium">
+                Target: 20 hrs (130% achieved)
+              </p>
+
+              <!-- Interactive Bar Chart -->
+              <div id="dash-weekly-chart"
+                class="flex items-end justify-between h-44 gap-2 pt-4 px-2 border-b border-slate-100 relative">
+                <!-- Rendered dynamically by script.js with tooltips -->
+              </div>
+            </div>
+
+            <div class="mt-4 flex items-center justify-between text-xs text-slate-500 pt-2">
+              <span class="flex items-center"><span class="w-2.5 h-2.5 rounded-full bg-blue-600 mr-1.5"></span>
+                Study & Coding</span>
+              <span class="text-slate-400">Hover bars to view hours</span>
+            </div>
+          </div>
+
+          <!-- ============================================ -->
+          <!-- Recommended Next Steps (7 cols) -->
+          <!-- ============================================ -->
+          <div
+            class="lg:col-span-7 bg-white rounded-2xl p-6 border border-blue-100 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center space-x-2">
+                  <div class="w-6 h-6 rounded-md bg-amber-100 text-amber-600 flex items-center justify-center">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                  </div>
+                  <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Recommended Next Steps</span>
+                </div>
+                <span class="text-xs font-bold text-slate-500">AI Adaptive Suggestions</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4">
+                Personalized recommendations based on your current project
+                submissions and upcoming hiring season.
+              </p>
+
+              <!-- Next Steps List -->
+              <div id="dash-next-steps-list" class="space-y-3">
+                <!-- Rendered dynamically via JavaScript -->
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span class="flex items-center text-blue-600 font-semibold">
+                <i data-lucide="check-circle-2" class="w-4 h-4 mr-1 text-emerald-500"></i>
+                Synchronized with your college calendar
+              </span>
+              <a href="#learn-skills" class="font-bold text-blue-600 hover:underline">View All Tasks &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 5. STUDENT SUCCESS & HIRING PARTNERS BANNER -->
+  <!-- ========================================================================= -->
+  <section class="py-16 bg-white border-y border-blue-100/90">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Metrics row -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center mb-12">
+        <div class="p-4">
+          <p class="text-3xl sm:text-4xl font-extrabold text-blue-600">
+            25,000+
+          </p>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 mt-1">
+            Students Enrolled
+          </p>
+          <p class="text-[11px] text-slate-400">From 150+ colleges</p>
+        </div>
+        <div class="p-4">
+          <p class="text-3xl sm:text-4xl font-extrabold text-blue-600">
+            94.2%
+          </p>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 mt-1">
+            Placement Rate
+          </p>
+          <p class="text-[11px] text-slate-400">Within 3 months</p>
+        </div>
+        <div class="p-4">
+          <p class="text-3xl sm:text-4xl font-extrabold text-blue-600">
+            450+
+          </p>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 mt-1">
+            Hiring Partners
+          </p>
+          <p class="text-[11px] text-slate-400">Top startups & MNCs</p>
+        </div>
+        <div class="p-4">
+          <p class="text-3xl sm:text-4xl font-extrabold text-blue-600">
+            $82,000
+          </p>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 mt-1">
+            Average Starting Offer
+          </p>
+          <p class="text-[11px] text-slate-400">Junior tech roles</p>
+        </div>
+      </div>
+
+      <!-- Testimonial card snippet -->
+      <div
+        class="max-w-3xl mx-auto bg-gradient-to-r from-blue-50/70 via-white to-blue-50/70 rounded-2xl p-6 sm:p-8 border border-blue-100 text-center relative shadow-sm">
+        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-4">
+          <i data-lucide="quote" class="w-5 h-5"></i>
+        </div>
+        <p class="text-base sm:text-lg text-slate-700 font-medium italic leading-relaxed">
+          &ldquo;CareerPath helped me build my portfolio from scratch. The AI
+          resume analyzer caught 6 missing keywords, and the mock interviews
+          gave me the exact confidence I needed to land my Software Engineer
+          internship at Microsoft!&rdquo;
+        </p>
+        <div class="mt-4 flex items-center justify-center space-x-3">
+          <div class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center">
+            PS
+          </div>
+          <div class="text-left">
+            <h4 class="text-xs font-bold text-slate-900">Priya Sharma</h4>
+            <p class="text-[11px] text-slate-500">
+              Incoming SWE Intern @ Microsoft • Class of 2026
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 6. CALL TO ACTION (CTA) SECTION -->
+  <!-- ========================================================================= -->
+  <section class="py-20 bg-gradient-to-b from-white via-[#EAF6FF] to-[#D6EEFF]/60 relative">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-white rounded-3xl p-8 sm:p-14 border border-blue-200 shadow-xl relative overflow-hidden">
+        <!-- Background light blue aesthetic glow -->
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-200/50 rounded-full blur-3xl pointer-events-none">
+        </div>
+        <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-sky-200/50 rounded-full blur-3xl pointer-events-none">
+        </div>
+
+        <div class="relative z-10 space-y-5 max-w-2xl mx-auto">
+          <span
+            class="px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 rounded-full border border-blue-200">
+            Start Your Journey Today
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#1E293B] tracking-tight">
+            Ready to Transform from Student to High-Earning Professional?
+          </h2>
+          <p class="text-slate-600 text-base sm:text-lg">
+            Create your free student account now. Gain access to roadmaps,
+            LeetCode-style practice, resume reviews, and your personalized
+            career dashboard.
+          </p>
+
+          <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <button type="button"
+              class="btn-trigger-signup w-full sm:w-auto px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 hover:-translate-y-0.5 transition duration-200 flex items-center justify-center space-x-2">
+              <span>Create Free Student Account</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+            <button type="button" onclick="
+                  showToast(
+                    'Campus Partnerships',
+                    'University tie-up portal opened for placement cells',
+                    'building',
+                  )
+                "
+              class="w-full sm:w-auto px-6 py-3.5 bg-slate-50 hover:bg-blue-50 text-slate-700 font-bold rounded-xl border border-blue-200 transition duration-200">
+              For College Placement Cells
+            </button>
+          </div>
+
+          <p class="text-xs text-slate-400 pt-2 flex items-center justify-center space-x-4">
+            <span class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-1"></i>
+              No Credit Card Required</span>
+            <span class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-1"></i>
+              Free Lifetime Student Tier</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 7. FOOTER -->
+  <!-- ========================================================================= -->
+  <footer class="bg-white border-t border-blue-100 pt-16 pb-12 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-100">
+        <!-- Brand summary (2 cols) -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center space-x-3">
+            <div
+              class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
+              <i data-lucide="compass" class="w-5 h-5"></i>
+            </div>
+            <span class="text-2xl font-extrabold text-[#1E293B]">Career<span class="text-blue-600">Path</span></span>
+          </div>
+          <p class="text-sm text-slate-500 max-w-sm leading-relaxed">
+            The all-in-one student career acceleration platform. We bridge the
+            gap between classroom theory and real-world tech recruitment
+            standards.
+          </p>
+          <div class="flex items-center space-x-3 pt-2">
+            <a href="#"
+              onclick="showToast('GitHub Community', 'Opening CareerPath Open Source repository', 'code-2')"
+              class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition shadow-sm"
+              aria-label="GitHub">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+            </a>
+            <a href="#"
+              onclick="showToast('LinkedIn Network', 'Opening CareerPath student alumni network', 'share-2')"
+              class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition shadow-sm"
+              aria-label="LinkedIn">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0-.02-3.28 1.64 1.64 0 0 0 .02 3.28M5.07 18.5h2.78v-8.37H5.07v8.37z"/>
+              </svg>
+            </a>
+            <a href="#"
+              onclick="showToast('Twitter / X', 'Follow @CareerPathHQ for tech hiring updates', 'send')"
+              class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition shadow-sm"
+              aria-label="Twitter">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="#"
+              onclick="showToast('Discord Community', 'Connecting to 18,000+ student developers', 'message-circle')"
+              class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition shadow-sm"
+              aria-label="Discord">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.893.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links Column 1: Platform Modules -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800">
+            Platform Modules
+          </h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+            <li>
+              <a href="#career-paths" class="hover:text-blue-600 transition">Career Paths</a>
+            </li>
+            <li>
+              <a href="#learn-skills" class="hover:text-blue-600 transition">Learn Skills</a>
+            </li>
+            <li>
+              <a href="#practice" class="hover:text-blue-600 transition">Coding Practice</a>
+            </li>
+            <li>
+              <a href="#projects" class="hover:text-blue-600 transition">Portfolio Projects</a>
+            </li>
+            <li>
+              <a href="#resume-analyzer" class="hover:text-blue-600 transition">Resume Analyzer</a>
+            </li>
+            <li>
+              <a href="#interview-prep" class="hover:text-blue-600 transition">Interview Prep</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Links Column 2: Popular Career Tracks -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800">
+            Career Tracks
+          </h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+            <li>
+              <a href="#dashboard" class="hover:text-blue-600 transition">Full Stack Web Dev</a>
+            </li>
+            <li>
+              <a href="#dashboard" class="hover:text-blue-600 transition">AI & Machine Learning</a>
+            </li>
+            <li>
+              <a href="#dashboard" class="hover:text-blue-600 transition">Cloud & DevOps</a>
+            </li>
+            <li>
+              <a href="#dashboard" class="hover:text-blue-600 transition">Data Science & SQL</a>
+            </li>
+            <li>
+              <a href="#dashboard" class="hover:text-blue-600 transition">Mobile App Dev</a>
+            </li>
+            <li>
+              <a href="#dashboard" class="hover:text-blue-600 transition">Cybersecurity Track</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Links Column 3: Student Resources -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800">
+            Student Resources
+          </h4>
+          <ul class="space-y-2 text-sm text-slate-600">
+            <li>
+              <a href="#dashboard" class="hover:text-blue-600 transition">Student Dashboard</a>
+            </li>
+            <li>
+              <a href="#" onclick="
+                    showToast(
+                      'Internship Board',
+                      'Aggregating summer 2027 internship postings',
+                      'briefcase',
+                    )
+                  " class="hover:text-blue-600 transition">Internship Portal</a>
+            </li>
+            <li>
+              <a href="#" onclick="
+                    showToast(
+                      'College Placement',
+                      'College verification portal opened',
+                      'graduation-cap',
+                    )
+                  " class="hover:text-blue-600 transition">Campus Placements</a>
+            </li>
+            <li>
+              <a href="#" onclick="
+                    showToast(
+                      'Community',
+                      'Welcome to the CareerPath student Discord community',
+                      'users',
+                    )
+                  " class="hover:text-blue-600 transition">Student Community</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-blue-600 transition">Privacy & Terms</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Copyright & Bottom Credit -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>
+          &copy; 2026 CareerPath Inc. All rights reserved. Built for student
+          career readiness.
+        </p>
+        <div class="flex items-center space-x-6">
+          <a href="#" class="hover:text-blue-600">Privacy Policy</a>
+          <a href="#" class="hover:text-blue-600">Terms of Service</a>
+          <a href="#" class="hover:text-blue-600">Security</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- 8. AUTH MODAL (LOGIN & SIGN UP) -->
+  <!-- ========================================================================= -->
+  <div id="auth-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <!-- Backdrop -->
+    <div id="auth-modal-backdrop" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm transition-opacity"></div>
+
+    <!-- Modal Dialog Window -->
+    <div class="relative bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-blue-100 z-10">
+      <!-- Close Button -->
+      <button id="auth-modal-close"
+        class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
+        aria-label="Close dialog">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Tabs: Login vs Sign Up -->
+      <div class="flex border-b border-slate-200 mb-6">
+        <button id="tab-login"
+          class="flex-1 py-3 text-sm font-bold border-b-2 border-blue-600 text-blue-600 transition">
+          Log In
+        </button>
+        <button id="tab-signup"
+          class="flex-1 py-3 text-sm font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-700 transition">
+          Sign Up Free
+        </button>
+      </div>
+
+      <!-- Title & Subtitle -->
+      <div class="mb-6 text-center">
+        <h3 id="auth-title" class="text-2xl font-extrabold text-[#1E293B]">
+          Welcome Back to CareerPath
+        </h3>
+        <p id="auth-subtitle" class="text-xs text-slate-500 mt-1">
+          Continue your personalized career readiness journey.
+        </p>
+      </div>
+
+      <!-- Quick Demo Login Button for convenient testing -->
+      <button id="btn-demo-login" type="button"
+        class="w-full mb-4 py-2.5 px-4 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-bold border border-blue-200 flex items-center justify-center space-x-2 transition">
+        <i data-lucide="user-check" class="w-4 h-4 text-blue-600"></i>
+        <span>Quick Demo Login (Alex Chen - Student)</span>
+      </button>
+
+      <div class="relative flex items-center justify-center mb-4">
+        <div class="border-t border-slate-200 w-full"></div>
+        <span class="bg-white px-3 text-[11px] uppercase tracking-wider text-slate-400 font-semibold absolute">Or with
+          email</span>
+      </div>
+
+      <!-- Auth Form -->
+      <form id="auth-form" class="space-y-4">
+        <!-- Extra Fields for Sign Up (Toggled via JS) -->
+        <div id="signup-fields" class="hidden space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1" for="auth-fullname">Full Name</label>
+            <input type="text" id="auth-fullname" placeholder="e.g. Alex Chen"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm placeholder:text-slate-400" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1" for="auth-university">College /
+              University</label>
+            <input type="text" id="auth-university" placeholder="e.g. Tech Institute '27"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm placeholder:text-slate-400" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1" for="auth-email">Student or Personal Email</label>
+          <input type="email" id="auth-email" required placeholder="alex@university.edu"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm placeholder:text-slate-400" />
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label class="block text-xs font-bold text-slate-700" for="auth-password">Password</label>
+            <a href="#" class="text-[11px] text-blue-600 hover:underline">Forgot?</a>
+          </div>
+          <input type="password" id="auth-password" required placeholder="••••••••••••"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm placeholder:text-slate-400" />
+        </div>
+
+        <button id="auth-submit-btn" type="submit"
+          class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-md shadow-blue-500/25 transition">
+          Log In to Dashboard
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 9. TOAST NOTIFICATION CONTAINER -->
+  <!-- ========================================================================= -->
+  <div id="toast"
+    class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-white border border-blue-200 rounded-2xl shadow-2xl p-4 flex items-center space-x-3.5 max-w-sm">
+      <div
+        class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
+        <i id="toast-icon" data-lucide="bell" class="w-5 h-5"></i>
+      </div>
+      <div>
+        <h4 id="toast-title" class="text-xs font-extrabold text-[#1E293B]">
+          Notification
+        </h4>
+        <p id="toast-msg" class="text-[11px] text-slate-600 mt-0.5">
+          Operation completed successfully.
+        </p>
+      </div>
+      <button onclick="
+            this.parentElement.parentElement.classList.add(
+              'translate-y-24',
+              'opacity-0',
+            )
+          " class="text-slate-400 hover:text-slate-600 p-1">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Core Script -->
+  <script src="script.js"></script>
+</body>
+
+</html>

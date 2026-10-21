@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CareerPath | Student Career Dashboard</title>
+    <meta
+      name="description"
+      content="Your personalized student career command center. Track learning milestones, coding practice, capstone projects, and AI job-readiness."
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233B82F6'><path d='M12 2L1 7l11 5 9-4.09V17h2V7L12 2z'/></svg>"
+      type="image/svg+xml"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: "#F0F8FF",
+                100: "#EAF6FF",
+                200: "#D6EEFF",
+                300: "#B8E0FF",
+                400: "#75BFFF",
+                500: "#3B82F6",
+                600: "#2563EB",
+                700: "#1D4ED8",
+                navy: "#1E293B",
+                dark: "#0F172A",
+                card: "#FFFFFF",
+              },
+            },
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+              mono: ['"JetBrains Mono"', "monospace"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body
+    class="bg-gradient-to-b from-[#F0F8FF] via-[#EAF6FF] to-white text-[#1E293B] min-h-screen antialiased flex flex-col selection:bg-blue-100 selection:text-blue-900"
+  >
+    <!-- ========================================================================= -->
+    <!-- 1. STICKY NAVBAR -->
+    <!-- ========================================================================= -->
+    <header
+      id="navbar"
+      class="sticky top-0 z-50 glass-nav border-b border-blue-100/80 transition-all duration-300"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <!-- Brand Logo & Name -->
+          <a
+            href="index.html"
+            class="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-xl p-1"
+            aria-label="CareerPath Home"
+          >
+            <div
+              class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-blue-600 via-blue-500 to-sky-400 flex items-center justify-center text-white shadow-md shadow-blue-500/25 group-hover:scale-105 group-hover:shadow-blue-500/40 transition-all duration-300"
+            >
+              <i data-lucide="compass" class="w-6 h-6 stroke-[2.2]"></i>
+            </div>
+            <div class="flex flex-col">
+              <div class="flex items-center space-x-1.5">
+                <span class="text-2xl font-extrabold tracking-tight text-[#1E293B]"
+                  >Career<span class="text-blue-600">Path</span></span
+                >
+                <span
+                  class="px-2 py-0.5 text-[10px] uppercase font-bold tracking-wider bg-blue-100 text-blue-700 rounded-full border border-blue-200"
+                  >Student</span
+                >
+              </div>
+              <span class="text-[11px] font-medium text-slate-500 tracking-wide"
+                >Campus to Career Platform</span
+              >
+            </div>
+          </a>
+
+          <!-- Desktop Navigation Links -->
+          <nav
+            class="hidden xl:flex items-center space-x-1"
+            aria-label="Main Navigation"
+          >
+            <a
+              href="index.html"
+              class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Home</a
+            >
+            <a
+              href="index.html#career-paths"
+              class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Career Paths</a
+            >
+            <a
+              href="index.html#learn-skills"
+              class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Learn Skills</a
+            >
+            <a
+              href="index.html#practice"
+              class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Practice</a
+            >
+            <a
+              href="index.html#projects"
+              class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Projects</a
+            >
+            <a
+              href="index.html#resume-analyzer"
+              class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Resume Analyzer</a
+            >
+            <a
+              href="index.html#interview-prep"
+              class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Interview Prep</a
+            >
+            <a
+              href="dashboard.html"
+              class="desktop-nav-link nav-link px-3.5 py-2 rounded-xl text-sm font-semibold text-blue-600 bg-blue-100/70 border border-blue-200 transition-colors flex items-center space-x-1.5 shadow-sm"
+            >
+              <span>Dashboard</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            </a>
+          </nav>
+
+          <!-- Medium Screen Nav dropdown / Compact view -->
+          <div class="hidden lg:flex xl:hidden items-center space-x-2">
+            <a
+              href="index.html"
+              class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50"
+              >Home</a
+            >
+            <a
+              href="index.html#career-paths"
+              class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50"
+              >Paths</a
+            >
+            <a
+              href="index.html#learn-skills"
+              class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50"
+              >Skills</a
+            >
+            <a
+              href="index.html#projects"
+              class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50"
+              >Projects</a
+            >
+            <a
+              href="dashboard.html"
+              class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-blue-600 bg-blue-100 border border-blue-200"
+              >Dashboard</a
+            >
+          </div>
+
+          <!-- Student Profile Pill in Header -->
+          <div class="hidden sm:flex items-center space-x-3">
+            <div class="flex items-center space-x-2.5 bg-white py-1.5 px-3 rounded-2xl border border-blue-200/90 shadow-sm">
+              <div class="w-8 h-8 rounded-xl bg-blue-600 text-white font-bold text-xs flex items-center justify-center">
+                AC
+              </div>
+              <div class="text-left">
+                <p class="text-xs font-extrabold text-[#1E293B] leading-none">Alex Chen</p>
+                <p class="text-[10px] text-slate-400 font-medium leading-tight">Student Active</p>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            </div>
+
+            <button
+              type="button"
+              onclick="showToast('Profile Settings', 'Alex Chen • Stanford CS 27 • Profile settings opened', 'user')"
+              class="p-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-xl border border-blue-100 transition"
+              aria-label="Student Profile Settings"
+            >
+              <i data-lucide="settings" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <!-- Mobile Hamburger Button -->
+          <div class="flex xl:hidden items-center space-x-2">
+            <button
+              id="mobile-menu-toggle"
+              type="button"
+              class="p-2.5 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-blue-50 border border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              aria-label="Open Navigation Menu"
+            >
+              <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Responsive Mobile Hamburger Drawer -->
+      <div
+        id="mobile-menu"
+        class="hidden xl:hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm transition-opacity"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div
+          class="fixed inset-y-0 right-0 max-w-xs w-full bg-white shadow-2xl p-6 flex flex-col justify-between overflow-y-auto border-l border-blue-100"
+        >
+          <div>
+            <!-- Header in drawer -->
+            <div class="flex items-center justify-between pb-5 border-b border-blue-100">
+              <div class="flex items-center space-x-2">
+                <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white">
+                  <i data-lucide="compass" class="w-5 h-5"></i>
+                </div>
+                <span class="text-lg font-bold text-slate-800"
+                  >Career<span class="text-blue-600">Path</span></span
+                >
+              </div>
+              <button
+                id="mobile-menu-close"
+                class="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100"
+                aria-label="Close menu"
+              >
+                <i data-lucide="x" class="w-5 h-5"></i>
+              </button>
+            </div>
+
+            <!-- Nav list -->
+            <nav class="mt-6 flex flex-col space-y-1.5">
+              <a
+                href="index.html"
+                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+              >
+                <i data-lucide="home" class="w-4 h-4 text-blue-500"></i>
+                <span>Home</span>
+              </a>
+              <a
+                href="index.html#career-paths"
+                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+              >
+                <i data-lucide="map" class="w-4 h-4 text-blue-500"></i>
+                <span>Career Paths</span>
+              </a>
+              <a
+                href="index.html#learn-skills"
+                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+              >
+                <i data-lucide="book-open" class="w-4 h-4 text-blue-500"></i>
+                <span>Learn Skills</span>
+              </a>
+              <a
+                href="index.html#practice"
+                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+              >
+                <i data-lucide="code-2" class="w-4 h-4 text-blue-500"></i>
+                <span>Practice Coding</span>
+              </a>
+              <a
+                href="index.html#projects"
+                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+              >
+                <i data-lucide="folder-git-2" class="w-4 h-4 text-blue-500"></i>
+                <span>Projects</span>
+              </a>
+              <a
+                href="index.html#resume-analyzer"
+                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+              >
+                <i data-lucide="file-check" class="w-4 h-4 text-blue-500"></i>
+                <span>Resume Analyzer</span>
+              </a>
+              <a
+                href="index.html#interview-prep"
+                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+              >
+                <i data-lucide="messages-square" class="w-4 h-4 text-blue-500"></i>
+                <span>Interview Prep</span>
+              </a>
+              <a
+                href="dashboard.html"
+                class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-xl text-blue-600 font-semibold bg-blue-50 border border-blue-200"
+              >
+                <div class="flex items-center space-x-3">
+                  <i data-lucide="layout-dashboard" class="w-4 h-4 text-blue-600"></i>
+                  <span>Student Dashboard</span>
+                </div>
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              </a>
+            </nav>
+          </div>
+
+          <!-- User Quick Sign Out / Account in Mobile Menu -->
+          <div class="pt-6 border-t border-blue-100 flex flex-col space-y-3">
+            <div class="flex items-center space-x-3 px-3 py-2 bg-blue-50/70 rounded-xl border border-blue-100">
+              <div class="w-8 h-8 rounded-lg bg-blue-600 text-white font-bold text-xs flex items-center justify-center">
+                AC
+              </div>
+              <div class="text-left text-xs">
+                <p class="font-bold text-slate-800">Alex Chen</p>
+                <p class="text-slate-500">alex.chen@university.edu</p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onclick="showToast('Signed Out', 'You have been logged out of your session', 'log-out')"
+              class="w-full py-2.5 text-center font-semibold text-slate-600 border border-slate-200 rounded-xl hover:bg-slate-50 text-xs"
+            >
+              Sign Out
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========================================================================= -->
+    <!-- 2. DASHBOARD MAIN CONTENT -->
+    <!-- ========================================================================= -->
+    <main class="flex-grow py-10 md:py-14 bg-gradient-to-b from-[#EAF6FF]/90 via-[#D6EEFF]/40 to-white relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+
+        <!-- Welcome Banner & Quick Action Header -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-white rounded-3xl p-6 sm:p-8 border border-blue-200/90 shadow-xl relative overflow-hidden">
+          <div class="absolute -top-12 -right-12 w-48 h-48 bg-blue-100/60 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div class="flex items-start sm:items-center space-x-4 z-10">
+            <div class="relative">
+              <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-blue-600 to-sky-400 text-white font-bold text-2xl sm:text-3xl flex items-center justify-center shadow-lg shadow-blue-500/30">
+                AC
+              </div>
+              <span class="absolute -bottom-1 -right-1 w-5 h-5 bg-emerald-500 border-2 border-white rounded-full flex items-center justify-center" title="Active Student">
+                <span class="w-2 h-2 rounded-full bg-white"></span>
+              </span>
+            </div>
+
+            <div>
+              <div class="flex flex-wrap items-center gap-2">
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-[#1E293B] tracking-tight">
+                  Welcome back, Alex Chen 👋
+                </h1>
+                <span class="text-xs px-2.5 py-0.5 rounded-full font-bold bg-blue-100 text-blue-700 border border-blue-200">
+                  Stanford CS &apos;27
+                </span>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1">
+                Your personalized career dashboard is synchronized with 2027 summer tech recruitment cycles.
+              </p>
+              <div class="flex flex-wrap items-center gap-3 mt-3 text-xs text-slate-600 font-semibold">
+                <span class="flex items-center text-emerald-600">
+                  <i data-lucide="shield-check" class="w-4 h-4 mr-1 text-emerald-500"></i>
+                  Placement Eligible
+                </span>
+                <span class="text-slate-300">•</span>
+                <span class="flex items-center text-blue-600">
+                  <i data-lucide="calendar" class="w-4 h-4 mr-1 text-blue-500"></i>
+                  Fall Semester Milestone 3
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions & Track Switcher -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 z-10">
+            <!-- Career Track Selector Tabs -->
+            <div class="flex items-center gap-1.5 bg-blue-50/80 p-1.5 rounded-2xl border border-blue-200/80">
+              <button
+                type="button"
+                data-track="fullstack"
+                class="track-switch-btn px-3 py-2 rounded-xl text-xs font-bold bg-blue-600 text-white shadow-sm transition-all duration-200"
+              >
+                Full Stack Web
+              </button>
+              <button
+                type="button"
+                data-track="ai"
+                class="track-switch-btn px-3 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-blue-100/60 transition-all duration-200"
+              >
+                AI & Data Science
+              </button>
+              <button
+                type="button"
+                data-track="cloud"
+                class="track-switch-btn px-3 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-blue-100/60 transition-all duration-200"
+              >
+                Cloud & DevOps
+              </button>
+            </div>
+
+            <!-- Export / Quick Trigger Button -->
+            <button
+              type="button"
+              onclick="showToast('Exporting Report', 'Generating your personalized 2026 Student Career Progress PDF...', 'file-down')"
+              class="px-4 py-2 bg-white hover:bg-blue-50 text-slate-700 hover:text-blue-600 font-bold text-xs rounded-xl border border-blue-200 shadow-sm transition flex items-center justify-center space-x-1.5"
+            >
+              <i data-lucide="download" class="w-4 h-4 text-blue-500"></i>
+              <span>Export PDF</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Metric Badges Row (Streak, XP, Tier, ATS Score) -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div class="bg-white rounded-2xl p-5 border border-blue-100 shadow-sm flex items-center space-x-4 hover:shadow-md transition">
+            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 border border-amber-200/60">
+              <i data-lucide="flame" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Daily Streak</p>
+              <h3 id="dash-streak-count" class="text-xl font-extrabold text-[#1E293B]">14 Days</h3>
+              <p class="text-[11px] text-emerald-600 font-semibold mt-0.5 flex items-center">
+                <i data-lucide="trending-up" class="w-3 h-3 mr-0.5"></i>Top 3% consistency
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 border border-blue-100 shadow-sm flex items-center space-x-4 hover:shadow-md transition">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 border border-indigo-200/60">
+              <i data-lucide="zap" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Total Career XP</p>
+              <h3 id="dash-xp-count" class="text-xl font-extrabold text-[#1E293B]">1,420 XP</h3>
+              <p class="text-[11px] text-blue-600 font-semibold mt-0.5">+180 XP this week</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 border border-blue-100 shadow-sm flex items-center space-x-4 hover:shadow-md transition">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200/60">
+              <i data-lucide="award" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Student Tier</p>
+              <h3 id="dash-level-text" class="text-xl font-extrabold text-[#1E293B]">Level 4</h3>
+              <p class="text-[11px] text-slate-500 font-semibold mt-0.5">Advanced Apprentice</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 border border-blue-100 shadow-sm flex items-center space-x-4 hover:shadow-md transition">
+            <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center shrink-0 border border-sky-200/60">
+              <i data-lucide="file-check" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400">ATS Resume Match</p>
+              <h3 class="text-xl font-extrabold text-[#1E293B]">92 / 100</h3>
+              <p class="text-[11px] text-emerald-600 font-semibold mt-0.5">FAANG Ready</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Dashboard 3-Card Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Card 1: Learning Progress (4 cols) -->
+          <div class="lg:col-span-4 bg-white rounded-3xl p-6 sm:p-7 border border-blue-100 shadow-md flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                  <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100">
+                    <i data-lucide="pie-chart" class="w-4 h-4"></i>
+                  </div>
+                  <h3 class="text-sm font-bold uppercase tracking-wider text-slate-600">Track Readiness</h3>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  On Track
+                </span>
+              </div>
+
+              <!-- Circular Progress Gauge -->
+              <div class="flex flex-col items-center justify-center my-6">
+                <div class="relative w-40 h-40 flex items-center justify-center">
+                  <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="42"
+                      stroke="#E2E8F0"
+                      stroke-width="8"
+                      fill="transparent"
+                    />
+                    <circle
+                      id="dash-progress-circle"
+                      cx="50"
+                      cy="50"
+                      r="42"
+                      stroke="#3B82F6"
+                      stroke-width="8"
+                      stroke-dasharray="264"
+                      stroke-dashoffset="84"
+                      stroke-linecap="round"
+                      fill="transparent"
+                      class="transition-all duration-1000 ease-out"
+                    />
+                  </svg>
+                  <div class="absolute flex flex-col items-center justify-center">
+                    <span id="dash-progress-text" class="text-4xl font-extrabold text-[#1E293B]">68%</span>
+                    <span class="text-xs text-slate-500 font-medium">Job-Ready</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track Phase Box -->
+              <div class="p-4 bg-blue-50/70 rounded-2xl border border-blue-100">
+                <div class="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1">
+                  <span id="dash-track-title" class="font-bold text-slate-800">Full Stack Web Developer</span>
+                  <span class="text-blue-600 font-bold">Active Track</span>
+                </div>
+                <p id="dash-track-phase" class="text-xs text-slate-600 font-medium">
+                  Phase 3 of 4: Backend Architecture & APIs
+                </p>
+                <div class="w-full bg-blue-200/80 h-2 rounded-full mt-3 overflow-hidden">
+                  <div id="dash-progress-bar" class="bg-blue-600 h-2 rounded-full progress-bar-fill" style="width: 68%"></div>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onclick="showToast('Curriculum Map', 'Opening comprehensive milestone breakdown for this track', 'map')"
+              class="w-full mt-6 py-3 px-4 rounded-xl bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-600 text-xs font-bold border border-slate-200/90 transition text-center flex items-center justify-center space-x-2"
+            >
+              <span>View Full Milestone Syllabus</span>
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <!-- Card 2: Skills Completed (4 cols) -->
+          <div class="lg:col-span-4 bg-white rounded-3xl p-6 sm:p-7 border border-blue-100 shadow-md flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                  <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
+                    <i data-lucide="check-square" class="w-4 h-4"></i>
+                  </div>
+                  <h3 class="text-sm font-bold uppercase tracking-wider text-slate-600">Skills Mastered</h3>
+                </div>
+                <span id="dash-skills-count" class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">
+                  14 / 20 Skills Mastered
+                </span>
+              </div>
+
+              <!-- Dynamic Skills List -->
+              <div id="dash-skills-list" class="space-y-3 mt-4">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onclick="showToast('Skill Assessment', 'Launch skill verification exam for LinkedIn badge', 'award')"
+              class="w-full mt-6 py-3 px-4 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-bold border border-blue-200 transition text-center flex items-center justify-center space-x-2"
+            >
+              <i data-lucide="plus-circle" class="w-4 h-4"></i>
+              <span>Take Next Skill Assessment</span>
+            </button>
+          </div>
+
+          <!-- Card 3: Projects Completed (4 cols) -->
+          <div class="lg:col-span-4 bg-white rounded-3xl p-6 sm:p-7 border border-blue-100 shadow-md flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                  <div class="w-8 h-8 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center border border-sky-100">
+                    <i data-lucide="folder-code" class="w-4 h-4"></i>
+                  </div>
+                  <h3 class="text-sm font-bold uppercase tracking-wider text-slate-600">Portfolio Capstones</h3>
+                </div>
+                <span id="dash-projects-count" class="text-xs font-bold text-slate-600 bg-slate-50 px-2.5 py-1 rounded-full border border-slate-200">
+                  3 / 4 Portfolio Projects
+                </span>
+              </div>
+
+              <!-- Dynamic Projects List -->
+              <div id="dash-projects-list" class="space-y-3 mt-4">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onclick="showToast('GitHub Verification', 'Syncing portfolio repositories with GitHub API', 'github')"
+              class="w-full mt-6 py-3 px-4 rounded-xl bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-600 text-xs font-bold border border-slate-200 transition text-center flex items-center justify-center space-x-2"
+            >
+              <i data-lucide="git-branch" class="w-4 h-4 text-slate-600"></i>
+              <span>Connect GitHub Repository</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Weekly Activity & Recommended Next Steps -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Weekly Activity Chart (5 cols) -->
+          <div class="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-7 border border-blue-100 shadow-md flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center space-x-2">
+                  <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100">
+                    <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
+                  </div>
+                  <h3 class="text-sm font-bold uppercase tracking-wider text-slate-600">Weekly Coding Hours</h3>
+                </div>
+                <span id="dash-weekly-total" class="text-sm font-extrabold text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+                  26.0 hrs
+                </span>
+              </div>
+              <p id="dash-weekly-target" class="text-xs text-slate-500 mb-6 font-medium">
+                Target: 20 hrs (130% achieved)
+              </p>
+
+              <!-- Interactive Bar Chart -->
+              <div
+                id="dash-weekly-chart"
+                class="flex items-end justify-between h-44 gap-2 pt-4 px-2 border-b border-slate-100 relative"
+              >
+                <!-- Rendered dynamically by script.js with tooltips -->
+              </div>
+            </div>
+
+            <div class="mt-4 flex items-center justify-between text-xs text-slate-500 pt-2">
+              <span class="flex items-center font-medium">
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-600 mr-2"></span>
+                Active Study & Coding Lab
+              </span>
+              <span class="text-slate-400">Hover bars to view hours</span>
+            </div>
+          </div>
+
+          <!-- Recommended Next Steps (7 cols) -->
+          <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-7 border border-blue-100 shadow-md flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center space-x-2">
+                  <div class="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-100">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                  </div>
+                  <h3 class="text-sm font-bold uppercase tracking-wider text-slate-600">Recommended Next Steps</h3>
+                </div>
+                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">
+                  AI Adaptive Plan
+                </span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4">
+                Prioritized action items tailored to your target hiring date: <strong>Summer 2027</strong>.
+              </p>
+
+              <!-- Dynamic Next Steps List -->
+              <div id="dash-next-steps-list" class="space-y-3">
+                <!-- Rendered dynamically via JavaScript -->
+              </div>
+            </div>
+
+            <div class="mt-5 pt-3 border-t border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-slate-500">
+              <span class="flex items-center text-blue-600 font-semibold">
+                <i data-lucide="check-circle-2" class="w-4 h-4 mr-1 text-emerald-500"></i>
+                Synchronized with college exam calendar
+              </span>
+              <a href="index.html#learn-skills" class="font-bold text-blue-600 hover:underline">
+                View All Learning Modules &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student Quick-Tools Bar -->
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-2 text-center md:text-left">
+            <span class="px-3 py-1 bg-white/20 rounded-full text-xs font-bold uppercase tracking-wider text-white">
+              Student Career Accelerators
+            </span>
+            <h3 class="text-2xl font-extrabold tracking-tight">Need Quick Practice Today?</h3>
+            <p class="text-blue-100 text-sm max-w-xl">
+              Access curated DSA problems, run an ATS resume scan before submitting your college placement form, or practice with the AI interview coach.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="index.html#practice"
+              class="px-5 py-3 rounded-xl bg-white text-blue-600 font-bold text-xs hover:bg-blue-50 shadow-md transition flex items-center space-x-1.5"
+            >
+              <i data-lucide="code-2" class="w-4 h-4"></i>
+              <span>DSA Sandbox</span>
+            </a>
+            <a
+              href="index.html#resume-analyzer"
+              class="px-5 py-3 rounded-xl bg-blue-500/40 hover:bg-blue-500/60 text-white font-bold text-xs border border-white/20 transition flex items-center space-x-1.5"
+            >
+              <i data-lucide="file-check" class="w-4 h-4"></i>
+              <span>Scan Resume</span>
+            </a>
+            <a
+              href="index.html#interview-prep"
+              class="px-5 py-3 rounded-xl bg-blue-500/40 hover:bg-blue-500/60 text-white font-bold text-xs border border-white/20 transition flex items-center space-x-1.5"
+            >
+              <i data-lucide="messages-square" class="w-4 h-4"></i>
+              <span>Mock Interview</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- ========================================================================= -->
+    <!-- 3. FOOTER -->
+    <!-- ========================================================================= -->
+    <footer class="bg-white border-t border-blue-100 pt-16 pb-12 mt-auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-100">
+          <!-- Brand Summary -->
+          <div class="lg:col-span-2 space-y-4">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
+                <i data-lucide="compass" class="w-5 h-5"></i>
+              </div>
+              <span class="text-2xl font-extrabold text-[#1E293B]">Career<span class="text-blue-600">Path</span></span>
+            </div>
+            <p class="text-sm text-slate-500 max-w-sm leading-relaxed">
+              The all-in-one student career acceleration platform. We bridge the gap between classroom theory and real-world tech recruitment standards.
+            </p>
+            <div class="flex items-center space-x-3 pt-2">
+              <a href="#" onclick="showToast('GitHub Community', 'Opening CareerPath Open Source repository', 'code-2')" class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition shadow-sm" aria-label="GitHub">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                </svg>
+              </a>
+              <a href="#" onclick="showToast('LinkedIn Network', 'Opening CareerPath student alumni network', 'share-2')" class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition shadow-sm" aria-label="LinkedIn">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0-.02-3.28 1.64 1.64 0 0 0 .02 3.28M5.07 18.5h2.78v-8.37H5.07v8.37z"/>
+                </svg>
+              </a>
+              <a href="#" onclick="showToast('Twitter / X', 'Follow @CareerPathHQ for tech hiring updates', 'send')" class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition shadow-sm" aria-label="Twitter">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="#" onclick="showToast('Discord Community', 'Connecting to 18,000+ student developers', 'message-circle')" class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition shadow-sm" aria-label="Discord">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.893.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Column 1 -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800">Platform Modules</h4>
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li><a href="index.html#career-paths" class="hover:text-blue-600 transition">Career Paths</a></li>
+              <li><a href="index.html#learn-skills" class="hover:text-blue-600 transition">Learn Skills</a></li>
+              <li><a href="index.html#practice" class="hover:text-blue-600 transition">Coding Practice</a></li>
+              <li><a href="index.html#projects" class="hover:text-blue-600 transition">Portfolio Projects</a></li>
+              <li><a href="index.html#resume-analyzer" class="hover:text-blue-600 transition">Resume Analyzer</a></li>
+              <li><a href="index.html#interview-prep" class="hover:text-blue-600 transition">Interview Prep</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800">Career Tracks</h4>
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li><a href="dashboard.html" class="hover:text-blue-600 transition">Full Stack Web Dev</a></li>
+              <li><a href="dashboard.html" class="hover:text-blue-600 transition">AI & Machine Learning</a></li>
+              <li><a href="dashboard.html" class="hover:text-blue-600 transition">Cloud & DevOps</a></li>
+              <li><a href="dashboard.html" class="hover:text-blue-600 transition">Data Science & SQL</a></li>
+              <li><a href="dashboard.html" class="hover:text-blue-600 transition">Mobile App Dev</a></li>
+              <li><a href="dashboard.html" class="hover:text-blue-600 transition">Cybersecurity Track</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3 -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800">Student Resources</h4>
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li><a href="dashboard.html" class="hover:text-blue-600 transition font-semibold text-blue-600">Student Dashboard</a></li>
+              <li><a href="#" onclick="showToast('Internships', 'Opening summer 2027 internship portal', 'briefcase')" class="hover:text-blue-600 transition">Internship Portal</a></li>
+              <li><a href="#" onclick="showToast('Placements', 'Connecting to college placement cell', 'graduation-cap')" class="hover:text-blue-600 transition">Campus Placements</a></li>
+              <li><a href="navbar.html" class="hover:text-blue-600 transition">Navbar Component</a></li>
+              <li><a href="footer.html" class="hover:text-blue-600 transition">Footer Component</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+          <p>&copy; 2026 CareerPath Inc. All rights reserved. Built for student career readiness.</p>
+          <div class="flex items-center space-x-6">
+            <a href="#" class="hover:text-blue-600">Privacy Policy</a>
+            <a href="#" class="hover:text-blue-600">Terms of Service</a>
+            <a href="#" class="hover:text-blue-600">Security</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- AUTH MODAL (LOGIN & SIGN UP) -->
+    <div id="auth-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div id="auth-modal-backdrop" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm transition-opacity"></div>
+      <div class="relative bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-blue-100 z-10">
+        <button id="auth-modal-close" class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" aria-label="Close modal">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div class="flex border-b border-slate-200 mb-6">
+          <button id="tab-login" class="flex-1 pb-3 text-sm font-bold border-b-2 border-blue-600 text-blue-600">Log In</button>
+          <button id="tab-signup" class="flex-1 pb-3 text-sm font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-700">Sign Up</button>
+        </div>
+        <div class="text-center mb-6">
+          <h3 id="auth-title" class="text-2xl font-extrabold text-[#1E293B]">Welcome Back</h3>
+          <p id="auth-subtitle" class="text-xs text-slate-500 mt-1">Continue your personalized career readiness journey.</p>
+        </div>
+        <button id="btn-demo-login" type="button" class="w-full mb-4 py-2.5 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold text-xs rounded-xl border border-emerald-200 flex items-center justify-center space-x-2 transition">
+          <i data-lucide="sparkles" class="w-4 h-4 text-emerald-600"></i>
+          <span>1-Click Student Demo Login (Alex Chen)</span>
+        </button>
+        <form id="auth-form" class="space-y-4">
+          <div id="signup-fields" class="hidden space-y-4">
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Full Name</label>
+              <input type="text" id="auth-fullname" placeholder="Alex Chen" class="w-full px-3.5 py-2.5 rounded-xl border border-blue-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">College / University</label>
+              <input type="text" id="auth-university" placeholder="e.g. Stanford University" class="w-full px-3.5 py-2.5 rounded-xl border border-blue-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">University Email</label>
+            <input type="email" id="auth-email" placeholder="student@university.edu" required class="w-full px-3.5 py-2.5 rounded-xl border border-blue-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Password</label>
+            <input type="password" id="auth-password" placeholder="••••••••••••" required class="w-full px-3.5 py-2.5 rounded-xl border border-blue-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <button type="submit" id="auth-submit-btn" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/25 transition">Log In to Dashboard</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300">
+      <div class="bg-white border border-blue-200 rounded-2xl shadow-2xl p-4 flex items-center space-x-3.5 max-w-sm">
+        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
+          <i id="toast-icon" data-lucide="bell" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h4 id="toast-title" class="text-xs font-extrabold text-[#1E293B]">Notification</h4>
+          <p id="toast-msg" class="text-[11px] text-slate-600 mt-0.5">Operation completed successfully.</p>
+        </div>
+        <button onclick="this.parentElement.parentElement.classList.add('translate-y-24', 'opacity-0')" class="text-slate-400 hover:text-slate-600 p-1" aria-label="Close notification">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Core Script -->
+    <script src="script.js"></script>
+  </body>
+</html>
