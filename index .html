@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerPath | Student Dashboard</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="brand" href="#" id="homeLink">
+      <span class="logo">◉</span>
+      <span>
+        <b>CareerPath</b>
+        <small>Campus to Career Platform</small>
+      </span>
+      <span class="student-tag">STUDENT</span>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <button id="homeBtn">Home</button>
+      <button id="trackerBtn" class="active">Career Tracker</button>
+      <button id="skillsBtn">Skills</button>
+      <button id="quizNavBtn">Quiz</button>
+    </div>
+
+    <div class="nav-actions">
+      <button class="login-btn" id="loginBtn">Log In</button>
+      <button class="signup-btn" id="signupBtn">Sign Up ↗</button>
+    </div>
+
+    <button class="menu-btn" id="menuBtn">☰</button>
+  </nav>
+
+  <main>
+
+    <!-- HOME -->
+    <section id="homeScreen" class="screen hero">
+      <div class="hero-card">
+        <span class="eyebrow">YOUR CAREER JOURNEY STARTS HERE</span>
+
+        <h1>
+          Ready to Transform from Student to
+          <span>High-Earning Professional?</span>
+        </h1>
+
+        <p>
+          Discover your career path, build industry-ready skills,
+          practise topic-based quizzes, and track your learning progress
+          in one place.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="primary-btn" id="startBtn">
+            Explore Career Tracker →
+          </button>
+          <button class="secondary-btn" id="exploreSkillsBtn">
+            Explore Skills
+          </button>
+        </div>
+
+        <div class="hero-points">
+          <span>✓ Free Practice</span>
+          <span>✓ Topic-wise Quizzes</span>
+          <span>✓ Track Your Progress</span>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-icon">🧭</div>
+          <h3>Career Tracker</h3>
+          <p>Choose a career and follow your learning journey step by step.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">💡</div>
+          <h3>Skill Development</h3>
+          <p>Explore technical skills and aptitude for your selected career.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Quiz Analytics</h3>
+          <p>Check your scores and review the answers you got wrong.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CAREER TRACKER -->
+    <section id="trackerScreen" class="screen page hidden">
+      <div class="welcome-row">
+        <div>
+          <span class="eyebrow">STUDENT DASHBOARD</span>
+          <h1>Career Tracker</h1>
+          <p>Plan your future. Learn new skills. Track your progress.</p>
+        </div>
+        <div class="date-badge">🎯 Your Career Journey</div>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card">
+          <div class="stat-icon blue">🧭</div>
+          <p>Career Tracks</p>
+          <h2 id="trackCount">6</h2>
+          <small>Available learning paths</small>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon purple">📚</div>
+          <p>Skills Explored</p>
+          <h2 id="skillCount">0</h2>
+          <small>Topics opened</small>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon green">✓</div>
+          <p>Quizzes Completed</p>
+          <h2 id="quizCount">0</h2>
+          <small>Practice sessions completed</small>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon orange">⭐</div>
+          <p>Average Score</p>
+          <h2 id="averageScore">0%</h2>
+          <small>Your quiz performance</small>
+        </article>
+      </div>
+
+      <div class="section-heading">
+        <div>
+          <h2>Choose Your Career Path</h2>
+          <p>Select a track to explore its skills and quizzes.</p>
+        </div>
+        <button class="text-btn" id="allTracksBtn">View All Tracks →</button>
+      </div>
+
+      <div id="trackerGrid" class="career-grid"></div>
+
+      <div class="progress-section">
+        <div class="section-heading">
+          <div>
+            <h2>My Learning Progress</h2>
+            <p>Your progress updates when you complete quizzes.</p>
+          </div>
+        </div>
+
+        <div id="progressList" class="progress-list"></div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skillsScreen" class="screen page hidden">
+      <div class="page-heading">
+        <span class="eyebrow">LEARN AND GROW</span>
+        <h1>Explore Your Skills</h1>
+        <p>Choose a career track and practise each skill separately.</p>
+      </div>
+
+      <div class="filter-row">
+        <label for="careerFilter">Career Track</label>
+        <select id="careerFilter">
+          <option value="all">All Career Tracks</option>
+        </select>
+      </div>
+
+      <div id="skillsGrid" class="skills-grid"></div>
+    </section>
+
+    <!-- TOPICS -->
+    <section id="topicsScreen" class="screen page hidden">
+      <button class="back-btn" id="backSkillsBtn">← Back to Skills</button>
+
+      <div class="welcome-row">
+        <div>
+          <span class="eyebrow">CAREER SKILLS</span>
+          <h1 id="topicsTitle">Career Topics</h1>
+          <p id="topicsDescription">Choose an individual topic to practise.</p>
+        </div>
+      </div>
+
+      <div id="topicsGrid" class="skills-grid"></div>
+    </section>
+
+    <!-- QUIZ SETS -->
+    <section id="setsScreen" class="screen page hidden">
+      <button class="back-btn" id="backTopicsBtn">← Back to Topics</button>
+
+      <div class="page-heading">
+        <span class="eyebrow">PRACTICE AND IMPROVE</span>
+        <h1 id="setsTitle">Choose a Quiz Set</h1>
+        <p>Each set contains 20 multiple-choice questions.</p>
+      </div>
+
+      <div id="setsGrid" class="sets-grid"></div>
+      <p class="notice">
+        Questions already attempted in another set will not be repeated.
+        If you finish all available questions, you can review your results.
+      </p>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quizScreen" class="screen page hidden">
+      <div class="quiz-header">
+        <button class="back-btn" id="exitQuizBtn">← Exit Quiz</button>
+        <div class="timer">◷ <span id="timer">15:00</span></div>
+      </div>
+
+      <div class="quiz-layout">
+        <div class="quiz-card">
+          <div class="quiz-meta">
+            <span id="quizCareerLabel"></span>
+            <span id="questionNumber"></span>
+          </div>
+
+          <div class="progress-track">
+            <div id="quizProgress"></div>
+          </div>
+
+          <h2 id="questionText">Question will appear here.</h2>
+
+          <div id="answerOptions" class="answer-options"></div>
+          <p id="answerFeedback" class="answer-feedback"></p>
+
+          <div class="quiz-controls">
+            <button class="secondary-btn" id="previousQuestionBtn">
+              ← Previous
+            </button>
+            <button class="primary-btn" id="nextQuestionBtn">
+              Next Question →
+            </button>
+          </div>
+        </div>
+
+        <aside class="quiz-sidebar">
+          <h3>Quiz Overview</h3>
+
+          <p>Career Track</p>
+          <strong id="quizCareerName"></strong>
+
+          <p>Selected Skill</p>
+          <strong id="quizTopicName"></strong>
+
+          <p>Total Questions</p>
+          <strong>20 MCQs</strong>
+
+          <p>Time Limit</p>
+          <strong>15 Minutes</strong>
+
+          <div class="tip-box">
+            💡 <b>Study Tip</b>
+            <p>Read every question carefully. Your selected answer is saved as you move between questions.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="resultsScreen" class="screen page hidden">
+      <div class="result-card">
+        <div class="result-symbol">✓</div>
+        <span class="eyebrow">QUIZ COMPLETED</span>
+        <h1>Quiz Results</h1>
+        <p id="resultMessage">Your performance summary is ready.</p>
+
+        <div class="score-circle">
+          <strong id="resultScore">0/20</strong>
+          <span id="resultPercent">0%</span>
+        </div>
+
+        <div class="result-stats">
+          <div><strong id="resultCorrect">0</strong><span>Correct</span></div>
+          <div><strong id="resultWrong">0</strong><span>Incorrect</span></div>
+          <div><strong id="resultUnanswered">0</strong><span>Unanswered</span></div>
+        </div>
+
+        <div class="result-buttons">
+          <button class="primary-btn" id="reviewAnswersBtn">Review Answers</button>
+          <button class="secondary-btn" id="retryQuizBtn">Try Another Set</button>
+          <button class="text-btn" id="dashboardBtn">Career Tracker</button>
+        </div>
+      </div>
+
+      <div id="reviewSection" class="review-section hidden">
+        <h2>Answer Review</h2>
+        <p>Check the correct answer for every question.</p>
+        <div id="reviewAnswersList"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <div class="footer-brand">
+          <span class="logo">◉</span>
+          <b>CareerPath</b>
+        </div>
+
+        <p>
+          The all-in-one student career acceleration platform.
+          We bridge the gap between classroom theory and real-world
+          technology skills.
+        </p>
+
+        <div class="social-links">
+          <span>in</span><span>◎</span><span>▶</span><span>✉</span>
+        </div>
+      </div>
+
+      <div>
+        <h4>PLATFORM MODULES</h4>
+        <a href="#" data-page="trackerScreen">Career Tracker</a>
+        <a href="#" data-page="skillsScreen">Learn Skills</a>
+        <a href="#" data-page="setsScreen">Coding Practice</a>
+        <a href="#" data-page="resultsScreen">Quiz Results</a>
+      </div>
+
+      <div>
+        <h4>CAREER TRACKS</h4>
+        <a href="#" class="footer-career" data-career="Full Stack Web Development">Full Stack Web Dev</a>
+        <a href="#" class="footer-career" data-career="AI & Machine Learning">AI & Machine Learning</a>
+        <a href="#" class="footer-career" data-career="Cloud & DevOps">Cloud & DevOps</a>
+        <a href="#" class="footer-career" data-career="Data Science & SQL">Data Science & SQL</a>
+        <a href="#" class="footer-career" data-career="Mobile App Development">Mobile App Dev</a>
+        <a href="#" class="footer-career" data-career="Cybersecurity">Cybersecurity</a>
+      </div>
+
+      <div>
+        <h4>STUDENT RESOURCES</h4>
+        <a href="#">Student Dashboard</a>
+        <a href="#">Internship Portal</a>
+        <a href="#">Campus Placements</a>
+        <a href="#">Student Community</a>
+        <a href="#">Privacy & Terms</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 CareerPath Inc. Built for student career readiness.</span>
+      <span>Privacy Policy · Terms of Service · Security</span>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast hidden"></div>
+
+</body>
+</html>
