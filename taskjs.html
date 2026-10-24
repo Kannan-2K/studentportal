@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareerPath | Student Career Preparation Platform</title>
+  <meta name="description"
+    content="Learn essential skills, practice coding, build projects, improve your resume, and prepare for your dream job—all in one platform." />
+
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233B82F6'><path d='M12 2L1 7l11 5 9-4.09V17h2V7L12 2z'/></svg>"
+    type="image/svg+xml" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: "#F0F8FF",
+              100: "#EAF6FF",
+              200: "#D6EEFF",
+              300: "#B8E0FF",
+              400: "#75BFFF",
+              500: "#3B82F6", // Accent Blue
+              600: "#2563EB",
+              700: "#1D4ED8",
+              navy: "#1E293B", // Dark Navy
+              dark: "#0F172A",
+              card: "#FFFFFF",
+            },
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+            mono: ['"JetBrains Mono"', "monospace"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+
+  <!---navbar -->
+
+ <body
+    class="bg-gradient-to-b from-[#F0F8FF] via-[#EAF6FF] to-white text-[#1E293B] min-h-screen antialiased flex flex-col selection:bg-blue-100 selection:text-blue-900"
+  >
+    <!-- ========================================================================= -->
+    <!-- MODULAR NAVBAR COMPONENT -->
+    <!-- ========================================================================= -->
+    <header
+      id="navbar"
+      class="sticky top-0 z-50 glass-nav border-b border-blue-100/80 transition-all duration-300"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <!-- Brand Logo & Name -->
+         <a href="index.html"
+  class="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-xl p-1"
+  aria-label="CareerPath Home">
+            <div
+              class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-blue-600 via-blue-500 to-sky-400 flex items-center justify-center text-white shadow-md shadow-blue-500/25 group-hover:scale-105 group-hover:shadow-blue-500/40 transition-all duration-300"
+            >
+              <i data-lucide="compass" class="w-6 h-6 stroke-[2.2]"></i>
+            </div>
+            <div class="flex flex-col">
+              <div class="flex items-center space-x-1.5">
+                <span class="text-2xl font-extrabold tracking-tight text-[#1E293B]"
+                  >Career<span class="text-blue-600">Path</span></span
+                >
+                <span
+                  class="px-2 py-0.5 text-[10px] uppercase font-bold tracking-wider bg-blue-100 text-blue-700 rounded-full border border-blue-200"
+                  >Student</span
+                >
+              </div>
+              <span class="text-[11px] font-medium text-slate-500 tracking-wide"
+                >Campus to Career Platform</span
+              >
+            </div>
+          </a>
+
+          <!-- Desktop Navigation Links -->
+          <nav
+            class="hidden xl:flex items-center space-x-1"
+            aria-label="Main Navigation"
+          >
+            <a
+              href="index.html"
+              class="desktop-nav-link nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Home</a
+            >
+            <a
+              href="index.html#career-paths"
+              class="desktop-nav-link nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Career Paths</a
+            >
+            <a
+              href="index.html#learn-skills"
+              class="desktop-nav-link nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Learn Skills</a
+            >
+            <a
+              href="index.html#practice"
+              class="desktop-nav-link nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Practice</a
+            >
+            <a
+              href="index.html#projects"
+              class="desktop-nav-link nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Projects</a
+            >
+            <a
+              href="index.html#resume-analyzer"
+              class="desktop-nav-link nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Resume Analyzer</a
+            >
+            <a
+              href="index.html#interview-prep"
+              class="desktop-nav-link nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Interview Prep</a
+            >
+            <a
+              href="dashboard.html"
+              class="desktop-nav-link nav-link px-3.5 py-2 rounded-xl text-sm font-semibold text-blue-600 bg-blue-50/80 hover:bg-blue-100/70 border border-blue-200/80 transition-colors flex items-center space-x-1.5"
+            >
+              <span>Dashboard</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            </a>
+          </nav>
+
+          <!-- Medium Screen Nav Compact View -->
+          <div class="hidden lg:flex xl:hidden items-center space-x-2">
+            <a
+              href="index.html"
+              class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50"
+              >Home</a
+            >
+            <a
+              href="index.html#career-paths"
+              class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50"
+              >Paths</a
+            >
+            <a
+              href="index.html#learn-skills"
+              class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50"
+              >Skills</a
+            >
+            <a
+              href="index.html#projects"
+              class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50"
+              >Projects</a
+            >
+            <a
+              href="dashboard.html"
+              class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-200"
+              >Dashboard</a
+            >
+          </div>
+
+          <!-- Auth CTA Buttons -->
+          <div class="hidden sm:flex items-center space-x-3">
+           <button
+                type="button"
+               class="btn-trigger-login px-5 py-3 text-base font-semibold text-slate-700 bg-white border border-blue-200 rounded-2xl hover:bg-blue-50 transition duration-200 whitespace-nowrap">
+              Log In
+            </button>
+            
+             <button
+                type="button"
+                  class="btn-trigger-signup px-6 py-3 text-base font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-500/25 rounded-2xl transition duration-200 whitespace-nowrap flex items-center space-x-2"
+               >
+            <span>Sign Up</span>
+               <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <!-- Mobile Hamburger Button -->
+          <div class="flex xl:hidden items-center space-x-2">
+            <button
+              type="button"
+              class="btn-trigger-login sm:hidden px-3 py-1.5 text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-200 rounded-lg"
+            >
+              Log In
+            </button>
+            <button
+              id="mobile-menu-toggle"
+              type="button"
+              class="p-2.5 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-blue-50 border border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              aria-label="Open Navigation Menu"
+            >
+            <i data-lucide="compass" class="w-6 h-6 stroke-[2.2]"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Responsive Mobile Hamburger Drawer -->
+      <div
+        id="mobile-menu"
+        class="hidden xl:hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm transition-opacity"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div
+          class="fixed inset-y-0 right-0 max-w-xs w-full bg-white shadow-2xl p-6 flex flex-col justify-between overflow-y-auto border-l border-blue-100"
+        >
+          <div>
+            <!-- Header in drawer -->
+            <div
+              class="flex items-center justify-between pb-5 border-b border-blue-100"
+            >
+              <div class="flex items-center space-x-2">
+                <div
+                  class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white"
+                >
+                  <i data-lucide="compass" class="w-5 h-5"></i>
+                </div>
+                <span class="text-lg font-bold text-slate-800"
+                  >Career<span class="text-blue-600">Path</span></span
+                >
+              </div>
+              <button
+                id="mobile-menu-close"
+                class="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100"
+                aria-label="Close menu"
+              >
+                <i data-lucide="x" class="w-5 h-5"></i>
+              </button>
+            </div>
+
+            <!-- Nav list -->
+            <nav class="mt-6 flex flex-col space-y-1.5">
+              <a
+                href="index.html"
+                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+              >
+                <i data-lucide="home" class="w-4 h-4 text-blue-500"></i>
+                <span>Home</span>
+              </a>
+              <a
+                href="index.html#career-paths"
+                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+              >
+                <i data-lucide="map" class="w-4 h-4 text-blue-500"></i>
+                <span>Career Paths</span>
+              </a>
+              <a
+                href="index.html#learn-skills"
+                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+              >
+                <i data-lucide="book-open" class="w-4 h-4 text-blue-500"></i>
+                <span>Learn Skills</span>
+              </a>
+              <a
+                href="index.html#practice"
+                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+              >
+                <i data-lucide="code-2" class="w-4 h-4 text-blue-500"></i>
+                <span>Practice Coding</span>
+              </a>
+              <a
+                href="index.html#projects"
+                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+              >
+                <i data-lucide="folder-git-2" class="w-4 h-4 text-blue-500"></i>
+                <span>Projects</span>
+              </a>
+              <a
+                href="index.html#resume-analyzer"
+                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+              >
+                <i data-lucide="file-check" class="w-4 h-4 text-blue-500"></i>
+                <span>Resume Analyzer</span>
+              </a>
+              <a
+                href="index.html#interview-prep"
+                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+              >
+                <i data-lucide="messages-square" class="w-4 h-4 text-blue-500"></i>
+                <span>Interview Prep</span>
+              </a>
+              <a
+                href="dashboard.html"
+                class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-xl text-blue-600 font-semibold bg-blue-50 border border-blue-200"
+              >
+                <div class="flex items-center space-x-3">
+                  <i data-lucide="layout-dashboard" class="w-4 h-4 text-blue-600"></i>
+                  <span>Student Dashboard</span>
+                </div>
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              </a>
+            </nav>
+          </div>
+
+          <!-- Auth buttons in drawer -->
+          <div class="pt-6 border-t border-blue-100 flex flex-col space-y-3">
+            <button
+              type="button"
+              class="btn-trigger-login w-full py-2.5 text-center font-semibold text-slate-700 border border-blue-200 rounded-xl hover:bg-blue-50"
+            >
+              Log In
+            </button>
+            <button
+              type="button"
+              class="btn-trigger-signup w-full py-2.5 text-center font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-md shadow-blue-500/20"
+            >
+              Sign Up Free
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+      </div>
+    </main>
+
+    <!-- AUTH MODAL (LOGIN & SIGN UP) -->
+    <div id="auth-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div id="auth-modal-backdrop" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm transition-opacity"></div>
+      <div class="relative bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-blue-100 z-10">
+        <button id="auth-modal-close" class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" aria-label="Close modal">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div class="flex border-b border-slate-200 mb-6">
+          <button id="tab-login" class="flex-1 pb-3 text-sm font-bold border-b-2 border-blue-600 text-blue-600">Log In</button>
+          <button id="tab-signup" class="flex-1 pb-3 text-sm font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-700">Sign Up</button>
+        </div>
+        <div class="text-center mb-6">
+          <h3 id="auth-title" class="text-2xl font-extrabold text-[#1E293B]">Welcome Back</h3>
+          <p id="auth-subtitle" class="text-xs text-slate-500 mt-1">Continue your personalized career readiness journey.</p>
+        </div>
+        <button id="btn-demo-login" type="button" class="w-full mb-4 py-2.5 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold text-xs rounded-xl border border-emerald-200 flex items-center justify-center space-x-2 transition">
+          <i data-lucide="sparkles" class="w-4 h-4 text-emerald-600"></i>
+          <span>1-Click Student Demo Login (Alex Chen)</span>
+        </button>
+        <form id="auth-form" class="space-y-4">
+          <div id="signup-fields" class="hidden space-y-4">
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Full Name</label>
+              <input type="text" id="auth-fullname" placeholder="Alex Chen" class="w-full px-3.5 py-2.5 rounded-xl border border-blue-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-600 mb-1">College / University</label>
+              <input type="text" id="auth-university" placeholder="e.g. Stanford University" class="w-full px-3.5 py-2.5 rounded-xl border border-blue-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">University Email</label>
+            <input type="email" id="auth-email" placeholder="student@university.edu" required class="w-full px-3.5 py-2.5 rounded-xl border border-blue-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Password</label>
+            <input type="password" id="auth-password" placeholder="••••••••••••" required class="w-full px-3.5 py-2.5 rounded-xl border border-blue-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <button type="submit" id="auth-submit-btn" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-500/25 transition">Log In to Dashboard</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300">
+      <div class="bg-white border border-blue-200 rounded-2xl shadow-2xl p-4 flex items-center space-x-3.5 max-w-sm">
+        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
+          <i id="toast-icon" data-lucide="bell" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h4 id="toast-title" class="text-xs font-extrabold text-[#1E293B]">Notification</h4>
+          <p id="toast-msg" class="text-[11px] text-slate-600 mt-0.5">Operation completed successfully.</p>
+        </div>
+        <button onclick="this.parentElement.parentElement.classList.add('translate-y-24', 'opacity-0')" class="text-slate-400 hover:text-slate-600 p-1" aria-label="Close notification">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+
+  
+<!-- CareerPath Task Page -->
+
+<!-- CareerPath Header -->
+<div class="mx-auto mt-4 flex w-[calc(100%-2rem)] max-w-5xl flex-row items-center gap-3 rounded-2xl border border-blue-100 bg-white p-4 shadow-sm sm:w-[calc(100%-3rem)] sm:p-5 transition-colors duration-200 hover:border-blue-300">
+
+  <img src="assets/Compass.png"
+       alt="CareerPath logo"
+       class="h-10 w-10 shrink-0 rounded-xl cursor-pointer">
+
+  <h2 class="text-xl font-extrabold text-slate-800">
+    Career<span class="text-blue-600">Path</span>
+  </h2>
+
+  <p class="ml-auto text-sm font-medium text-slate-600 hover:underline">
+    My Learning
+  </p>
+
+</div>
+
+
+<!-- Main Page Content -->
+<div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+
+  <!-- Breadcrumb and Title -->
+  <div class="mt-6 flex flex-col gap-3">
+
+    <h3 class="text-sm font-bold text-blue-600 lg:text-base cursor-pointer hover:underline">
+      YOUR LEARNING ROADMAP
+      <span class="text-slate-400"> / </span>
+    JAVASCRIPT
+    </h3>
+
+    <h1 class="text-2xl font-extrabold text-slate-800 lg:text-3xl">
+    JAVASCRIPT
+    </h1>
+
+    <p class="text-sm leading-6 text-slate-600 lg:text-lg">
+      Complete each task to build your JAVASCRIPT skills, one step at a time.
+    </p>
+
+  </div>
+
+
+  <!-- Your Progress -->
+  <div class="mt-5 w-full rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
+
+    <div class="flex flex-row items-center justify-between">
+      <h3 class="font-bold text-slate-800">Your Progress</h3>
+      <h3 class="js-progress-score font-bold text-blue-600">0/5</h3>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="mt-4 h-2 overflow-hidden rounded-full bg-slate-200">
+      <div class="js-progress-bar h-full w-0 rounded-full bg-blue-600"></div>
+    </div>
+
+    <p class="mt-2 text-sm text-slate-500">
+      Complete your tasks to track your progress.
+    </p>
+
+  </div>
+
+
+  <!-- Beginner Tasks Heading -->
+  <div class="mt-8 flex flex-row items-center justify-between gap-3">
+
+    <h2 class="text-xl font-bold text-slate-800">
+      Beginner Tasks
+    </h2>
+
+    <p class="shrink-0 rounded-full bg-blue-50 px-3 py-1 text-sm font-bold text-blue-600 hover:underline">
+      5 tasks
+    </p>
+
+  </div>
+
+
+  <!-- JS Task 1 -->
+ <div class="mt-5 flex w-full flex-row items-center justify-between gap-2 rounded-2xl border border-blue-100 bg-white p-4 shadow-sm transition-colors duration-200 hover:border-blue-300 sm:gap-3 sm:p-5">
+<span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100">
+    <img src="assets/line-chart.png"
+         alt="HTML Structure"
+         class="h-11 w-11 shrink-0 object-contain">
+</span>
+
+    <div class="mx-1 flex min-w-0 flex-1 flex-col gap-1 sm:mx-3">
+      <h3 class="font-bold text-slate-800">JavaScript Variables</h3>
+      <p class="js-task-active text-sm leading-5 text-slate-600">
+      Learn let, const, strings, numbers and booleans.
+      </p>
+    </div>
+
+   <input type="checkbox"
+       class="js-tick h-5 w-5 cursor-pointer accent-blue-600">
+
+  </div>
+
+
+  <!-- JS Task 2 -->
+ <div class="mt-5 flex w-full flex-row items-center justify-between gap-2 rounded-2xl border border-blue-100 bg-white p-4 shadow-sm transition-colors duration-200 hover:border-blue-300 sm:gap-3 sm:p-5">
+<span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100">
+    <img src="assets/usability.png"
+         alt="Headings and Paragraphs"
+         class="h-11 w-11 shrink-0 object-contain">
+         </span>
+
+    <div class="mx-1 flex min-w-0 flex-1 flex-col gap-1 sm:mx-3">
+      <h3 class="font-bold text-slate-800">Functions and Parameters</h3>
+      <p class="js-task-active text-sm leading-5 text-slate-600">
+      Create reusable functions and pass arguments.
+      </p>
+    </div>
+
+  <input type="checkbox"
+       class="js-tick h-5 w-5 cursor-pointer accent-blue-600">
+
+  </div>
+
+
+  <!-- JSTask 3 -->
+   <div class="mt-5 flex w-full flex-row items-center justify-between gap-2 rounded-2xl border border-blue-100 bg-white p-4 shadow-sm transition-colors duration-200 hover:border-blue-300 sm:gap-3 sm:p-5">
+
+      <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100">
+    <img src="assets/decision.png"
+         alt="Links and Images"
+         class="h-11 w-11 shrink-0 object-contain">
+      </span>
+
+    <div class="mx-1 flex min-w-0 flex-1 flex-col gap-1 sm:mx-3">
+      <h3 class="font-bold text-slate-800">Conditions and Decisions</h3>
+      <p class="js-task-active text-sm leading-5 text-slate-600">
+    Use if, else if and else to make decisions.
+      </p>
+    </div>
+
+  <input type="checkbox"
+       class="js-tick h-5 w-5 cursor-pointer accent-blue-600">
+
+  </div>
+
+
+  <!-- CSS Task 4 -->
+ <div class="mt-5 flex w-full flex-row items-center justify-between gap-2 rounded-2xl border border-blue-100 bg-white p-4 shadow-sm transition-colors duration-200 hover:border-blue-300 sm:gap-3 sm:p-5">
+
+      <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100">
+    <img src="assets/a5.png"
+         alt="Lists and Tables"
+         class="h-11 w-11 shrink-0 object-contain">
+      </span>
+
+    <div class="mx-1 flex min-w-0 flex-1 flex-col gap-1 sm:mx-3">
+      <h3 class="font-bold text-slate-800">Arrays and Loops</h3>
+      <p class="js-task-active text-sm leading-5 text-slate-600">
+Store multiple values in arrays and iterate using loops.
+      </p>
+    </div>
+
+    <input type="checkbox"
+       class="js-tick h-5 w-5 cursor-pointer accent-blue-600">
+
+  </div>
+
+
+  <!-- HTML Task 5 -->
+ <div class="mt-5 flex w-full flex-row items-center justify-between gap-2 rounded-2xl border border-blue-100 bg-white p-4 shadow-sm transition-colors duration-200 hover:border-blue-300 sm:gap-3 sm:p-5">
+
+    <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100">
+    <img src="assets/web-browser.png"
+         alt="Simple Webpage"
+         class="h-11 w-11 shrink-0 object-contain">
+    </span>
+
+    <div class="mx-1 flex min-w-0 flex-1 flex-col gap-1 sm:mx-3">
+      <h3 class="font-bold text-slate-800"> DOM Manipulation and Events</h3>
+      <p class="js-task-active text-sm leading-5 text-slate-600">
+       Select HTML elements, respond to events and update webpage content.
+      </p>
+    </div>
+
+  
+  <input type="checkbox"
+       class="js-tick h-5 w-5 cursor-pointer accent-blue-600">
+
+  </div>
+
+</div>
+
+<!-- Navigation Buttons -->
+<div class="mx-auto mb-8 mt-8 flex w-full max-w-4xl flex-row items-center justify-between px-4">
+
+  <!-- Back to Roadmap -->
+  <a href="roadmap.html"
+     class="flex items-center gap-2 rounded-xl border border-blue-200 bg-white px-5 py-3 font-medium text-slate-700 transition hover:bg-blue-50">
+
+    <i data-lucide="arrow-left" class="h-5 w-5"></i>
+    Back to Roadmap
+  </a>
+
+  <!-- Next: CSS -->
+  <a href="tasks.html?course=css"
+     class="flex items-center gap-2 rounded-xl bg-blue-600 px-3 lg:px-5 py-3 font-semibold text-white transition hover:bg-blue-700">
+
+    Next topic: React
+    <i data-lucide="arrow-right" class="h-5 w-5"></i>
+  </a>
+
+</div>
+
+<!-- CareerPath Footer -->
+<footer class="mt-10 border-t border-blue-100 bg-white">
+
+  <div class="mx-auto flex w-full max-w-5xl flex-col gap-5 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+
+    <!-- Logo and description -->
+    <div class="flex items-center gap-3">
+      <img src="assets/Compass.png"
+           alt="CareerPath logo"
+           class="h-9 w-9 rounded-lg">
+
+      <div>
+        <h2 class="font-extrabold text-slate-800">
+          Career<span class="text-blue-600">Path</span>
+        </h2>
+
+        <p class="text-xs text-slate-500">
+          Your journey to a successful career.
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer links -->
+    <div class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-600">
+      <a href="roadmap.html" class="transition hover:text-blue-600">
+        Roadmap
+      </a>
+
+      <a href="index.html" class="transition hover:text-blue-600">
+        Home
+      </a>
+
+      <a href="index.html#contact" class="transition hover:text-blue-600">
+        Contact
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Copyright -->
+  <div class="border-t border-slate-100 px-4 py-4 text-center text-xs text-slate-500">
+    © 2026 CareerPath. All rights reserved.
+  </div>
+
+</footer>
+
+</section>
+<script src="task.js"></script>
+<script>
+  lucide.createIcons();
+</script>
+ </body>
+</html>

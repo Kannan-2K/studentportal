@@ -1,4 +1,4 @@
-const careers = [
+const careers = [ 
   {
     name: "Full Stack Web Development",
     icon: "💻",
