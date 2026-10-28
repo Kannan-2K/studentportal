@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Details | CareerPath</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233B82F6'%3E%3Cpath d='M12 2L1 7l11 5 9-4.09V17h2V7L12 2z'/%3E%3C/svg%3E">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: "#F0F8FF",
+                            100: "#EAF6FF",
+                            200: "#D6EEFF",
+                            300: "#B8E0FF",
+                            400: "#75BFFF",
+                            500: "#3B82F6",
+                            600: "#2563EB",
+                            700: "#1D4ED8",
+                            navy: "#1E293B",
+                            dark: "#0F172A",
+                            card: "#FFFFFF"
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+                        mono: ['"JetBrains Mono"', "monospace"]
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Navbar -->
+    <nav class="border-b border-slate-200 bg-white sticky top-0 z-50 backdrop-blur bg-white/95">
+        <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500 text-white shadow-md shadow-blue-500/20">
+                    <i data-lucide="graduation-cap" class="h-6 w-6"></i>
+                </div>
+                <span class="text-lg font-extrabold text-brand-navy">
+                    Career<span class="text-brand-500">Path</span>
+                </span>
+            </a>
+
+            <div class="flex items-center gap-4">
+                <a href="career_explorer.html"
+                   class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-brand-600 transition">
+                    <i data-lucide="arrow-left" class="h-4 w-4"></i>
+                    Back to jobs
+                </a>
+                <a href="dashboard.html"
+                   class="hidden sm:inline-flex rounded-lg bg-brand-50 px-3.5 py-2 text-xs font-bold text-brand-600 hover:bg-brand-100 transition">
+                    Dashboard
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="mx-auto max-w-7xl px-5 py-8 lg:px-8">
+
+        <!-- Breadcrumb -->
+        <div class="mb-6 flex items-center gap-2 text-sm text-slate-500">
+            <a href="index.html" class="hover:text-brand-600 transition">Home</a>
+            <i data-lucide="chevron-right" class="h-4 w-4"></i>
+            <a href="career_explorer.html" class="hover:text-brand-600 transition">Jobs</a>
+            <i data-lucide="chevron-right" class="h-4 w-4"></i>
+            <span class="text-brand-600 font-medium">Job details</span>
+        </div>
+
+        <!-- Job header -->
+        <section id="job-header"
+            class="rounded-3xl border border-slate-200 bg-white p-6 sm:p-9 shadow-sm">
+        </section>
+
+        <div id="job-content" class="mt-6 grid items-start gap-6 lg:grid-cols-[1fr_320px]">
+
+            <!-- Main job information -->
+            <section class="space-y-6">
+
+                <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                    <h2 class="text-xl font-extrabold text-brand-navy">
+                        Job description
+                    </h2>
+                    <p id="job-description" class="mt-4 text-sm leading-7 text-slate-600"></p>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                    <h2 class="text-xl font-extrabold text-brand-navy">
+                        Responsibilities
+                    </h2>
+                    <ul id="job-responsibilities"
+                        class="mt-5 space-y-4 text-sm leading-6 text-slate-600"></ul>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                    <h2 class="text-xl font-extrabold text-brand-navy">
+                        Requirements
+                    </h2>
+                    <ul id="job-requirements"
+                        class="mt-5 space-y-4 text-sm leading-6 text-slate-600"></ul>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                    <h2 class="text-xl font-extrabold text-brand-navy">
+                        Required skills
+                    </h2>
+                    <div id="job-skills" class="mt-5 flex flex-wrap gap-2"></div>
+                </div>
+
+            </section>
+
+            <!-- Sidebar -->
+            <aside class="space-y-5">
+
+                <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                    <h2 class="text-lg font-extrabold text-brand-navy">
+                        Job overview
+                    </h2>
+
+                    <div id="job-overview" class="mt-5 space-y-5"></div>
+
+                    <a id="apply-link" href="#"
+                        class="mt-7 flex w-full items-center justify-center gap-2 rounded-xl bg-brand-500 px-5 py-3.5 text-sm font-bold text-white hover:bg-brand-600 transition shadow-md shadow-blue-500/20">
+                        Apply for this job
+                        <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                    </a>
+
+                    <p class="mt-3 text-center text-xs leading-5 text-slate-500">
+                        Review the application instructions before submitting.
+                    </p>
+                </div>
+
+                <div class="rounded-2xl border border-brand-100 bg-brand-50 p-6 shadow-sm">
+                    <i data-lucide="lightbulb" class="h-7 w-7 text-brand-500"></i>
+                    <h3 class="mt-3 font-bold text-brand-navy">
+                        Improve your chances
+                    </h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-600">
+                        Tailor your resume to the role and highlight relevant projects.
+                    </p>
+                    <a href="career_tips.html"
+                        class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-600 hover:text-brand-700 transition">
+                        Read career tips
+                        <i data-lucide="arrow-right" class="h-4 w-4"></i>
+                    </a>
+                </div>
+
+            </aside>
+        </div>
+
+        <!-- Invalid job -->
+        <section id="not-found" class="hidden rounded-2xl border border-slate-200 bg-white p-10 text-center shadow-sm">
+            <i data-lucide="file-question" class="mx-auto h-12 w-12 text-brand-500"></i>
+            <h2 class="mt-4 text-xl font-bold text-brand-navy">Job not found</h2>
+            <p class="mt-2 text-sm text-slate-500">
+                This job may no longer be available or the link may be incorrect.
+            </p>
+            <a href="career_explorer.html"
+                class="mt-5 inline-flex rounded-xl bg-brand-500 px-5 py-3 text-sm font-bold text-white hover:bg-brand-600 transition shadow-md shadow-blue-500/20">
+                Browse all jobs
+            </a>
+        </section>
+
+    </main>
+
+    <!-- ========================================================================= -->
+    <!-- MODULAR FOOTER COMPONENT -->
+    <!-- ========================================================================= -->
+    <footer id="footer" class="bg-white border-t border-blue-100 pt-16 pb-12 mt-auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-100">
+          <!-- Brand Summary (2 cols) -->
+          <div class="lg:col-span-2 space-y-4">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
+                <i data-lucide="compass" class="w-5 h-5"></i>
+              </div>
+              <span class="text-2xl font-extrabold text-[#1E293B]">Career<span class="text-blue-600">Path</span></span>
+            </div>
+            <p class="text-sm text-slate-500 max-w-sm leading-relaxed">
+              The all-in-one student career acceleration platform. We bridge the gap between classroom theory and real-world tech recruitment standards.
+            </p>
+            <div class="flex items-center space-x-3 pt-2">
+              <a
+                href="#"
+                onclick="showToast('GitHub Community', 'Opening CareerPath Open Source repository', 'code-2')"
+                class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition shadow-sm"
+                aria-label="GitHub"
+              >
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                </svg>
+              </a>
+              <a
+                href="#"
+                onclick="showToast('LinkedIn Network', 'Opening CareerPath student alumni network', 'share-2')"
+                class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition shadow-sm"
+                aria-label="LinkedIn"
+              >
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0-.02-3.28 1.64 1.64 0 0 0 .02 3.28M5.07 18.5h2.78v-8.37H5.07v8.37z"/>
+                </svg>
+              </a>
+              <a
+                href="#"
+                onclick="showToast('Twitter / X', 'Follow @CareerPathHQ for tech hiring updates', 'send')"
+                class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition shadow-sm"
+                aria-label="Twitter"
+              >
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a
+                href="#"
+                onclick="showToast('Discord Community', 'Connecting to 18,000+ student developers', 'message-circle')"
+                class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition shadow-sm"
+                aria-label="Discord"
+              >
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.893.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Placement Newsletter Form -->
+            <div class="pt-2">
+              <p class="text-xs font-bold text-slate-700 mb-2">Subscribe to Placement Alerts</p>
+              <form onsubmit="event.preventDefault(); showToast('Subscribed!', 'You will receive weekly internship and placement alerts.', 'mail');" class="flex items-center space-x-2 max-w-sm">
+                <input type="email" required placeholder="Enter student email..." class="flex-1 px-3.5 py-2 text-xs rounded-xl border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-50" />
+                <button type="submit" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-md shadow-blue-500/20 transition">
+                  Join
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Links Column 1: Platform Modules -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800">
+              Platform Modules
+            </h4>
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li>
+                <a href="index.html#career-paths" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Career Paths</span>
+                </a>
+              </li>
+              <li>
+                <a href="career_explorer.html" class="hover:text-blue-600 transition flex items-center font-medium text-blue-600">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-blue-500"></i>
+                  <span>Career Explorer & Jobs</span>
+                </a>
+              </li>
+              <li>
+                <a href="roadmap.html" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Learning Roadmaps</span>
+                </a>
+              </li>
+              <li>
+                <a href="quiz/index.html" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Practice Quiz</span>
+                </a>
+              </li>
+              <li>
+                <a href="index.html#projects" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Portfolio Projects</span>
+                </a>
+              </li>
+              <li>
+                <a href="index.html#resume-analyzer" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Resume Analyzer</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Links Column 2: Popular Career Tracks -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800">
+              Career Tracks
+            </h4>
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li>
+                <a href="dashboard.html" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Full Stack Web Dev</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>AI & Machine Learning</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Cloud & DevOps</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Data Science & SQL</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Mobile App Dev</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Cybersecurity Track</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Links Column 3: Student Resources -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800">
+              Student Resources
+            </h4>
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li>
+                <a href="dashboard.html" class="hover:text-blue-600 transition flex items-center font-semibold text-blue-600">
+                  <i data-lucide="layout-dashboard" class="w-3.5 h-3.5 mr-1 text-blue-500"></i>
+                  <span>Student Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="career_explorer.html"
+                  class="hover:text-blue-600 transition flex items-center"
+                >
+                  <i data-lucide="briefcase" class="w-3.5 h-3.5 mr-1 text-blue-500"></i>
+                  <span>Internship & Job Portal</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="career_tips.html"
+                  class="hover:text-blue-600 transition flex items-center"
+                >
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5 mr-1 text-blue-500"></i>
+                  <span>Career Tips & Guides</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  onclick="showToast('College Placement', 'College verification portal opened', 'graduation-cap')"
+                  class="hover:text-blue-600 transition flex items-center"
+                >
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Campus Placements</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  onclick="showToast('Community', 'Welcome to the CareerPath student Discord community', 'users')"
+                  class="hover:text-blue-600 transition flex items-center"
+                >
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Student Community</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copyright & Bottom Credit -->
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+          <p>
+            &copy; 2026 CareerPath Inc. All rights reserved. Built for student career readiness.
+          </p>
+          <div class="flex items-center space-x-6">
+            <a href="#" onclick="showToast('Legal', 'CareerPath Privacy Policy')" class="hover:text-blue-600">Privacy Policy</a>
+            <a href="#" onclick="showToast('Legal', 'CareerPath Terms of Service')" class="hover:text-blue-600">Terms of Service</a>
+            <a href="#" onclick="showToast('Security', 'Enterprise-grade encryption for student data')" class="hover:text-blue-600">Security</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300">
+      <div class="bg-white border border-blue-200 rounded-2xl shadow-2xl p-4 flex items-center space-x-3.5 max-w-sm">
+        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
+          <i id="toast-icon" data-lucide="bell" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h4 id="toast-title" class="text-xs font-extrabold text-[#1E293B]">Notification</h4>
+          <p id="toast-msg" class="text-[11px] text-slate-600 mt-0.5">Operation completed successfully.</p>
+        </div>
+        <button onclick="document.getElementById('toast').classList.add('translate-y-24', 'opacity-0', 'pointer-events-none')" class="text-slate-400 hover:text-slate-600 p-1" aria-label="Close notification">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+
+    <script>
+        // Job details, matched to the IDs in career_explorer.html.
+        const jobDetails = {
+            1: {
+                title: "Frontend Developer",
+                company: "PixelCraft Technologies",
+                initials: "PC",
+                color: "bg-blue-100 text-blue-700",
+                category: "Frontend",
+                location: "Chennai, India",
+                mode: "Hybrid",
+                type: "Full-time",
+                experience: "0–2 years",
+                salary: "₹4–7 LPA",
+                posted: "Today",
+                deadline: "20 Nov 2026",
+                description: "We are looking for a motivated Frontend Developer to create responsive, accessible, and user-friendly web applications. You will work closely with designers, backend developers, and product managers to turn ideas into polished digital experiences.",
+                responsibilities: [
+                    "Build responsive web pages using HTML, CSS, JavaScript, and React.",
+                    "Convert Figma designs into reusable UI components.",
+                    "Optimize website performance and accessibility.",
+                    "Collaborate with backend developers to integrate APIs.",
+                    "Test and fix UI issues across browsers and screen sizes."
+                ],
+                requirements: [
+                    "Good understanding of HTML, CSS, and JavaScript.",
+                    "Familiarity with React and component-based development.",
+                    "Understanding of responsive design and web accessibility.",
+                    "Knowledge of Git and browser developer tools.",
+                    "A portfolio or personal projects demonstrating your skills."
+                ],
+                skills: ["HTML", "CSS", "JavaScript", "React", "Tailwind CSS", "Git"]
+            },
+
+            2: {
+                title: "UI/UX Designer",
+                company: "DesignOrbit Studio",
+                initials: "DO",
+                color: "bg-pink-100 text-pink-700",
+                category: "UX Design",
+                location: "Bengaluru, India",
+                mode: "Remote",
+                type: "Full-time",
+                experience: "2–5 years",
+                salary: "₹6–10 LPA",
+                posted: "1 day ago",
+                deadline: "15 Nov 2026",
+                description: "We are seeking a UI/UX Designer to create useful, intuitive digital experiences. You will work with product managers and developers to understand user needs and translate them into clear user flows, wireframes, prototypes, and high-quality interfaces.",
+                responsibilities: [
+                    "Conduct user research and understand customer needs.",
+                    "Create user flows, wireframes, prototypes, and UI designs.",
+                    "Maintain consistent components and design systems in Figma.",
+                    "Run usability tests and improve designs using feedback.",
+                    "Collaborate with engineers throughout implementation."
+                ],
+                requirements: [
+                    "Proficiency in Figma and interface design.",
+                    "Understanding of user-centered design principles.",
+                    "Experience with wireframing and interactive prototyping.",
+                    "Ability to explain design decisions using user needs.",
+                    "A portfolio showcasing design process and case studies."
+                ],
+                skills: ["Figma", "Wireframing", "Prototyping", "User Research", "Design Systems"]
+            },
+
+            3: {
+                title: "Backend Developer",
+                company: "CloudNest Systems",
+                initials: "CN",
+                color: "bg-violet-100 text-violet-700",
+                category: "Backend",
+                location: "Hyderabad, India",
+                mode: "On-site",
+                type: "Full-time",
+                experience: "2–5 years",
+                salary: "₹8–14 LPA",
+                posted: "2 days ago",
+                deadline: "25 Nov 2026",
+                description: "Join our engineering team to build reliable backend services, secure APIs, and scalable database integrations for modern applications.",
+                responsibilities: [
+                    "Build and maintain REST APIs.",
+                    "Design and optimize database queries.",
+                    "Implement authentication and authorization.",
+                    "Write tests and troubleshoot production issues.",
+                    "Collaborate with frontend and DevOps engineers."
+                ],
+                requirements: [
+                    "Experience with Node.js or Python.",
+                    "Knowledge of SQL and database design.",
+                    "Understanding of REST APIs and HTTP.",
+                    "Familiarity with Git and automated testing."
+                ],
+                skills: ["Node.js", "Python", "REST API", "SQL", "Git"]
+            },
+
+            4: {
+                title: "Full Stack Developer",
+                company: "LaunchPad Digital",
+                initials: "LP",
+                color: "bg-emerald-100 text-emerald-700",
+                category: "Full Stack",
+                location: "Pune, India",
+                mode: "Hybrid",
+                type: "Full-time",
+                experience: "0–2 years",
+                salary: "₹5–9 LPA",
+                posted: "3 days ago",
+                deadline: "18 Nov 2026",
+                description: "Help us develop complete web applications, from responsive interfaces to backend services and database integrations.",
+                responsibilities: [
+                    "Develop reusable frontend components.",
+                    "Build backend endpoints and business logic.",
+                    "Connect applications to databases and APIs.",
+                    "Fix bugs and improve application performance.",
+                    "Participate in code reviews and team planning."
+                ],
+                requirements: [
+                    "Knowledge of JavaScript and React.",
+                    "Basic backend development experience.",
+                    "Understanding of databases and APIs.",
+                    "Familiarity with Git and responsive web design."
+                ],
+                skills: ["React", "Node.js", "MongoDB", "JavaScript", "Git"]
+            },
+
+            5: {
+                title: "Data Science Intern",
+                company: "InsightLoop Analytics",
+                initials: "IL",
+                color: "bg-orange-100 text-orange-700",
+                category: "Data Science",
+                location: "Remote, India",
+                mode: "Remote",
+                type: "Internship",
+                experience: "Fresher",
+                salary: "₹15k–25k/month",
+                posted: "5 days ago",
+                deadline: "10 Nov 2026",
+                description: "Support our analytics team by preparing datasets, exploring patterns, and turning data into useful reports and insights.",
+                responsibilities: [
+                    "Clean and organize datasets.",
+                    "Perform exploratory data analysis.",
+                    "Create reports and visualizations.",
+                    "Assist with data quality checks.",
+                    "Document findings and share insights."
+                ],
+                requirements: [
+                    "Basic Python and SQL knowledge.",
+                    "Understanding of statistics fundamentals.",
+                    "Familiarity with spreadsheets and data visualization.",
+                    "Willingness to learn and solve analytical problems."
+                ],
+                skills: ["Python", "SQL", "Pandas", "Statistics", "Data Analysis"]
+            },
+
+            6: {
+                title: "DevOps Engineer",
+                company: "StackBridge Cloud",
+                initials: "SB",
+                color: "bg-cyan-100 text-cyan-700",
+                category: "DevOps",
+                location: "Mumbai, India",
+                mode: "Hybrid",
+                type: "Full-time",
+                experience: "5+ years",
+                salary: "₹15–24 LPA",
+                posted: "8 days ago",
+                deadline: "1 Dec 2026",
+                description: "Help operate scalable cloud infrastructure, automate deployment workflows, and improve reliability across our production services.",
+                responsibilities: [
+                    "Manage cloud infrastructure and environments.",
+                    "Build and maintain CI/CD pipelines.",
+                    "Monitor systems and troubleshoot incidents.",
+                    "Automate repetitive infrastructure tasks.",
+                    "Improve security, reliability, and deployment speed."
+                ],
+                requirements: [
+                    "Experience with a major cloud platform.",
+                    "Knowledge of Docker and Kubernetes.",
+                    "Experience with CI/CD and infrastructure automation.",
+                    "Understanding of Linux, networking, and monitoring."
+                ],
+                skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Linux"]
+            },
+
+            7: {
+                title: "QA Automation Engineer",
+                company: "QualityFirst Labs",
+                initials: "QF",
+                color: "bg-amber-100 text-amber-700",
+                category: "QA",
+                location: "Coimbatore, India",
+                mode: "On-site",
+                type: "Full-time",
+                experience: "2–5 years",
+                salary: "₹6–11 LPA",
+                posted: "12 days ago",
+                deadline: "30 Nov 2026",
+                description: "Ensure the quality of our software by designing test plans, automating repeatable test cases, and working with developers to prevent defects.",
+                responsibilities: [
+                    "Create and maintain automated test scripts.",
+                    "Perform functional and regression testing.",
+                    "Report and track defects.",
+                    "Test APIs and application workflows.",
+                    "Collaborate with developers to resolve issues."
+                ],
+                requirements: [
+                    "Understanding of software testing principles.",
+                    "Experience with a test automation framework.",
+                    "Basic programming and API testing knowledge.",
+                    "Strong attention to detail and problem-solving skills."
+                ],
+                skills: ["Selenium", "Java", "API Testing", "Jira", "Automation"]
+            },
+
+            8: {
+                title: "Associate Product Manager",
+                company: "NextWave Products",
+                initials: "NW",
+                color: "bg-rose-100 text-rose-700",
+                category: "Product",
+                location: "Bengaluru, India",
+                mode: "Remote",
+                type: "Full-time",
+                experience: "0–2 years",
+                salary: "₹7–12 LPA",
+                posted: "25 days ago",
+                deadline: "28 Nov 2026",
+                description: "Work with product, design, and engineering teams to understand user needs, coordinate product initiatives, and support the delivery of valuable product features.",
+                responsibilities: [
+                    "Gather user feedback and product requirements.",
+                    "Support roadmaps and prioritize feature requests.",
+                    "Coordinate with design and engineering teams.",
+                    "Monitor product metrics and user feedback.",
+                    "Maintain product documentation and updates."
+                ],
+                requirements: [
+                    "Strong communication and organizational skills.",
+                    "Ability to understand user problems and requirements.",
+                    "Basic knowledge of product development processes.",
+                    "Analytical thinking and willingness to learn."
+                ],
+                skills: ["Product Strategy", "Analytics", "Agile", "Communication", "Research"]
+            }
+        };
+
+        // Read the job ID from the URL.
+        const params = new URLSearchParams(window.location.search);
+        const jobId = params.get("id");
+        const job = jobDetails[jobId];
+
+        // Toast handler
+        let toastTimeout;
+        function showToast(title, message, iconName = "bell") {
+            const toast = document.getElementById("toast");
+            if (!toast) return;
+
+            const toastTitle = document.getElementById("toast-title");
+            const toastMsg = document.getElementById("toast-msg");
+            const toastIcon = document.getElementById("toast-icon");
+
+            if (toastTitle) toastTitle.textContent = title;
+            if (toastMsg) toastMsg.textContent = message;
+            if (toastIcon) toastIcon.setAttribute("data-lucide", iconName);
+
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toast.classList.remove("translate-y-24", "opacity-0", "pointer-events-none");
+            toast.classList.add("translate-y-0", "opacity-100");
+
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove("translate-y-0", "opacity-100");
+                toast.classList.add("translate-y-24", "opacity-0", "pointer-events-none");
+            }, 3500);
+        }
+
+        // Display a list safely using text content.
+        function renderList(elementId, items) {
+            const list = document.getElementById(elementId);
+            if (!list) return;
+            list.innerHTML = "";
+
+            items.forEach(item => {
+                const li = document.createElement("li");
+                li.className = "flex items-start gap-3";
+
+                const icon = document.createElement("span");
+                icon.className = "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600 font-bold text-xs";
+                icon.textContent = "✓";
+
+                const text = document.createElement("span");
+                text.textContent = item;
+
+                li.append(icon, text);
+                list.appendChild(li);
+            });
+        }
+
+        if (!job) {
+            document.getElementById("job-header").classList.add("hidden");
+            document.getElementById("job-content").classList.add("hidden");
+            document.getElementById("not-found").classList.remove("hidden");
+        } else {
+            document.title = job.title + " | CareerPath";
+
+            document.getElementById("job-header").innerHTML = `
+                <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-start">
+                    <div class="flex items-start gap-4">
+                        <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ${job.color} text-lg font-extrabold shadow-sm">
+                            ${job.initials}
+                        </div>
+                        <div>
+                            <p class="font-mono text-xs uppercase tracking-widest text-brand-600">
+                                ${job.category}
+                            </p>
+                            <h1 class="mt-2 text-2xl font-extrabold tracking-tight text-brand-navy sm:text-3xl">
+                                ${job.title}
+                            </h1>
+                            <p class="mt-2 text-sm font-semibold text-slate-500">
+                                ${job.company}
+                            </p>
+                        </div>
+                    </div>
+
+                    <a href="#apply-link"
+                       class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-brand-500 px-5 py-3 text-sm font-bold text-white hover:bg-brand-600 transition shadow-md shadow-blue-500/20">
+                        Apply now
+                        <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                    </a>
+                </div>
+
+                <div class="mt-7 flex flex-wrap gap-x-6 gap-y-4 border-t border-slate-100 pt-6 text-sm text-slate-600">
+                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="h-4 w-4 text-brand-500"></i>${job.location}</span>
+                    <span class="flex items-center gap-2"><i data-lucide="briefcase-business" class="h-4 w-4 text-brand-500"></i>${job.experience}</span>
+                    <span class="flex items-center gap-2"><i data-lucide="clock-3" class="h-4 w-4 text-brand-500"></i>${job.type}</span>
+                    <span class="flex items-center gap-2"><i data-lucide="laptop" class="h-4 w-4 text-brand-500"></i>${job.mode}</span>
+                    <span class="flex items-center gap-2"><i data-lucide="calendar-days" class="h-4 w-4 text-brand-500"></i>${job.posted}</span>
+                </div>
+            `;
+
+            document.getElementById("job-description").textContent = job.description;
+
+            renderList("job-responsibilities", job.responsibilities);
+            renderList("job-requirements", job.requirements);
+
+            const skillsContainer = document.getElementById("job-skills");
+            skillsContainer.innerHTML = "";
+
+            job.skills.forEach(skill => {
+                const span = document.createElement("span");
+                span.className = "rounded-lg bg-brand-50 px-3 py-2 text-sm font-semibold text-brand-700 border border-brand-100";
+                span.textContent = skill;
+                skillsContainer.appendChild(span);
+            });
+
+            const overview = [
+                ["Salary", job.salary, "wallet"],
+                ["Experience", job.experience, "briefcase-business"],
+                ["Employment", job.type, "clock-3"],
+                ["Work mode", job.mode, "laptop"],
+                ["Location", job.location, "map-pin"],
+                ["Apply before", job.deadline, "calendar-days"]
+            ];
+
+            document.getElementById("job-overview").innerHTML = overview.map(item => `
+                <div class="flex items-start gap-3">
+                    <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
+                        <i data-lucide="${item[2]}" class="h-4 w-4"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500">${item[0]}</p>
+                        <p class="mt-1 text-sm font-bold text-brand-navy">${item[1]}</p>
+                    </div>
+                </div>
+            `).join("");
+
+            document.getElementById("apply-link").href =
+                "mailto:careers@example.com?subject=" +
+                encodeURIComponent(job.title + " Application - " + job.company);
+
+            lucide.createIcons();
+        }
+
+        lucide.createIcons();
+    </script>
+
+</body>
+</html>

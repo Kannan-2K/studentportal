@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Tips | CareerPath</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233B82F6'%3E%3Cpath d='M12 2L1 7l11 5 9-4.09V17h2V7L12 2z'/%3E%3C/svg%3E">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: "#F0F8FF",
+                            100: "#EAF6FF",
+                            200: "#D6EEFF",
+                            300: "#B8E0FF",
+                            400: "#75BFFF",
+                            500: "#3B82F6",
+                            600: "#2563EB",
+                            700: "#1D4ED8",
+                            navy: "#1E293B",
+                            dark: "#0F172A",
+                            card: "#FFFFFF"
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+                        mono: ['"JetBrains Mono"', "monospace"]
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
+        <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 lg:px-8">
+
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500 text-white shadow-md shadow-blue-500/20">
+                    <i data-lucide="graduation-cap" class="h-6 w-6"></i>
+                </div>
+                <span class="text-lg font-extrabold text-brand-navy">
+                    Career<span class="text-brand-500">Path</span>
+                </span>
+            </a>
+
+            <div class="hidden items-center gap-6 text-sm font-semibold md:flex">
+                <a href="career_explorer.html" class="text-slate-600 hover:text-brand-600 transition">Explore Jobs</a>
+                <a href="#resources" class="text-brand-600">Career Tips</a>
+                <a href="dashboard.html" class="text-slate-600 hover:text-brand-600 transition">Dashboard</a>
+            </div>
+
+            <a href="career_explorer.html#job-explorer"
+                class="rounded-xl bg-brand-500 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-600 transition shadow-md shadow-blue-500/20">
+                Find Jobs
+            </a>
+        </div>
+    </nav>
+
+    <main class="mx-auto max-w-7xl px-5 py-8 lg:px-8">
+
+        <!-- Hero -->
+        <section class="relative overflow-hidden rounded-3xl bg-brand-dark px-6 py-12 text-white sm:px-10 sm:py-16 lg:px-14 shadow-xl">
+            <div class="absolute -right-12 -top-16 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl"></div>
+
+            <div class="relative z-10 max-w-3xl">
+                <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 font-mono text-xs text-blue-200 backdrop-blur-sm">
+                    <i data-lucide="sparkles" class="h-4 w-4"></i>
+                    YOUR CAREER TOOLKIT
+                </span>
+
+                <h1 class="mt-6 text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+                    Small steps today.<br>
+                    <span class="text-brand-400">Big career moves tomorrow.</span>
+                </h1>
+
+                <p class="mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
+                    Practical guidance to help you build your resume, improve your portfolio,
+                    prepare for interviews, and find the right job.
+                </p>
+
+                <a href="#resources"
+                    class="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-500 px-5 py-3.5 text-sm font-bold text-white hover:bg-brand-600 transition shadow-md shadow-blue-500/20">
+                    Explore career resources
+                    <i data-lucide="arrow-down" class="h-4 w-4"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Quick navigation -->
+        <section class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <a href="#resume" class="rounded-xl border border-slate-200 bg-white p-4 transition hover:border-brand-400 hover:shadow-sm">
+                <i data-lucide="file-text" class="h-6 w-6 text-brand-500"></i>
+                <p class="mt-3 text-sm font-bold text-brand-navy">Resume</p>
+                <p class="mt-1 text-xs text-slate-500">Stand out</p>
+            </a>
+
+            <a href="#portfolio" class="rounded-xl border border-slate-200 bg-white p-4 transition hover:border-brand-400 hover:shadow-sm">
+                <i data-lucide="panels-top-left" class="h-6 w-6 text-brand-500"></i>
+                <p class="mt-3 text-sm font-bold text-brand-navy">Portfolio</p>
+                <p class="mt-1 text-xs text-slate-500">Show your work</p>
+            </a>
+
+            <a href="#interviews" class="rounded-xl border border-slate-200 bg-white p-4 transition hover:border-brand-400 hover:shadow-sm">
+                <i data-lucide="messages-square" class="h-6 w-6 text-brand-500"></i>
+                <p class="mt-3 text-sm font-bold text-brand-navy">Interviews</p>
+                <p class="mt-1 text-xs text-slate-500">Prepare better</p>
+            </a>
+
+            <a href="#job-search" class="rounded-xl border border-slate-200 bg-white p-4 transition hover:border-brand-400 hover:shadow-sm">
+                <i data-lucide="search" class="h-6 w-6 text-brand-500"></i>
+                <p class="mt-3 text-sm font-bold text-brand-navy">Job search</p>
+                <p class="mt-1 text-xs text-slate-500">Find opportunities</p>
+            </a>
+        </section>
+
+        <!-- Career resources -->
+        <section id="resources" class="mt-14">
+            <p class="font-mono text-xs uppercase tracking-widest text-brand-600">Learn and grow</p>
+            <h2 class="mt-2 text-2xl font-extrabold tracking-tight text-brand-navy sm:text-3xl">
+                Build a stronger career
+            </h2>
+            <p class="mt-3 text-sm text-slate-500">
+                Start with the fundamentals and improve one step at a time.
+            </p>
+
+            <div class="mt-7 grid gap-5 md:grid-cols-2">
+
+                <!-- Resume -->
+                <article id="resume" class="scroll-mt-24 rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 shadow-sm">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-brand-600">
+                        <i data-lucide="file-user" class="h-6 w-6"></i>
+                    </div>
+
+                    <h3 class="mt-5 text-xl font-extrabold text-brand-navy">Create a strong resume</h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-500">
+                        Help recruiters quickly understand your experience, skills, and impact.
+                    </p>
+
+                    <ul class="mt-5 space-y-3 text-sm leading-6 text-slate-600">
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"></i>Keep your resume clear and easy to scan.</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"></i>Highlight relevant skills and projects for each role.</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"></i>Describe achievements using specific results where possible.</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"></i>Check spelling, dates, contact details, and links.</li>
+                    </ul>
+                </article>
+
+                <!-- Portfolio -->
+                <article id="portfolio" class="scroll-mt-24 rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 shadow-sm">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-50 text-pink-600">
+                        <i data-lucide="panels-top-left" class="h-6 w-6"></i>
+                    </div>
+
+                    <h3 class="mt-5 text-xl font-extrabold text-brand-navy">Build a portfolio that tells a story</h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-500">
+                        Demonstrate how you think, solve problems, and create useful experiences.
+                    </p>
+
+                    <ul class="mt-5 space-y-3 text-sm leading-6 text-slate-600">
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"></i>Show your best and most relevant projects.</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"></i>Explain the problem, process, decisions, and outcome.</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"></i>For UI/UX, include research, user flows, wireframes, and final screens.</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"></i>Make sure live demos and project links work.</li>
+                    </ul>
+                </article>
+
+                <!-- Interviews -->
+                <article id="interviews" class="scroll-mt-24 rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 shadow-sm">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-50 text-violet-600">
+                        <i data-lucide="messages-square" class="h-6 w-6"></i>
+                    </div>
+
+                    <h3 class="mt-5 text-xl font-extrabold text-brand-navy">Prepare for interviews</h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-500">
+                        Build confidence by preparing examples and practicing how you explain your work.
+                    </p>
+
+                    <ul class="mt-5 space-y-3 text-sm leading-6 text-slate-600">
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"></i>Research the company, product, and role.</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"></i>Practice introducing yourself in a clear, natural way.</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"></i>Prepare examples of challenges and how you solved them.</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"></i>Prepare thoughtful questions for the interviewer.</li>
+                    </ul>
+                </article>
+
+                <!-- Job search -->
+                <article id="job-search" class="scroll-mt-24 rounded-2xl border border-slate-200 bg-white p-6 sm:p-7 shadow-sm">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
+                        <i data-lucide="briefcase-business" class="h-6 w-6"></i>
+                    </div>
+
+                    <h3 class="mt-5 text-xl font-extrabold text-brand-navy">Make your job search effective</h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-500">
+                        Build a consistent routine instead of applying randomly to every opening.
+                    </p>
+
+                    <ul class="mt-5 space-y-3 text-sm leading-6 text-slate-600">
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"></i>Prioritize jobs that match your skills and goals.</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"></i>Apply through official company or verified job links.</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"></i>Track applications, dates, and follow-ups.</li>
+                        <li class="flex gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-4 w-4 shrink-0 text-brand-500"></i>Keep improving your skills while you apply.</li>
+                    </ul>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Role-specific tips -->
+        <section class="mt-14">
+            <p class="font-mono text-xs uppercase tracking-widest text-brand-600">Choose your path</p>
+            <h2 class="mt-2 text-2xl font-extrabold text-brand-navy">Tips for your career field</h2>
+
+            <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+                <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:border-brand-300 transition">
+                    <i data-lucide="code-2" class="h-7 w-7 text-brand-500"></i>
+                    <h3 class="mt-4 font-bold text-brand-navy">Frontend development</h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-500">
+                        Master HTML, CSS, JavaScript, responsive layouts, accessibility, and Git. Build and deploy projects that solve real problems.
+                    </p>
+                </article>
+
+                <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:border-brand-300 transition">
+                    <i data-lucide="database" class="h-7 w-7 text-brand-500"></i>
+                    <h3 class="mt-4 font-bold text-brand-navy">Backend development</h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-500">
+                        Learn a backend language, API development, databases, authentication, error handling, and testing.
+                    </p>
+                </article>
+
+                <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:border-brand-300 transition">
+                    <i data-lucide="palette" class="h-7 w-7 text-brand-500"></i>
+                    <h3 class="mt-4 font-bold text-brand-navy">UI/UX design</h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-500">
+                        Practice user research, wireframing, prototyping, visual hierarchy, usability testing, and explaining design decisions.
+                    </p>
+                </article>
+
+                <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:border-brand-300 transition">
+                    <i data-lucide="chart-no-axes-combined" class="h-7 w-7 text-brand-500"></i>
+                    <h3 class="mt-4 font-bold text-brand-navy">Data science</h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-500">
+                        Develop your Python, SQL, statistics, data visualization, and analytical problem-solving skills through projects.
+                    </p>
+                </article>
+
+                <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:border-brand-300 transition">
+                    <i data-lucide="cloud" class="h-7 w-7 text-brand-500"></i>
+                    <h3 class="mt-4 font-bold text-brand-navy">DevOps and cloud</h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-500">
+                        Learn Linux, networking, cloud fundamentals, containers, automation, monitoring, and deployment pipelines.
+                    </p>
+                </article>
+
+                <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:border-brand-300 transition">
+                    <i data-lucide="target" class="h-7 w-7 text-brand-500"></i>
+                    <h3 class="mt-4 font-bold text-brand-navy">Product management</h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-500">
+                        Practice understanding user needs, defining problems, prioritizing features, communicating clearly, and using product metrics.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Action section -->
+        <section class="mt-14 rounded-3xl bg-brand-50 ring-1 ring-brand-300 p-7 sm:p-10 shadow-sm">
+            <div class="flex flex-col justify-between gap-6 md:flex-row md:items-center">
+                <div>
+                    <p class="font-mono text-xs uppercase tracking-widest text-brand-600">Take the next step</p>
+                    <h2 class="mt-2 text-2xl font-extrabold text-brand-navy">
+                        Ready to find your next opportunity?
+                    </h2>
+                    <p class="mt-3 max-w-xl text-sm leading-6 text-slate-600">
+                        Put your skills into action. Explore openings and find a role that fits your goals.
+                    </p>
+                </div>
+
+                <a href="career_explorer.html"
+                    class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-brand-500 px-6 py-3.5 text-sm font-bold text-white hover:bg-brand-600 transition shadow-md shadow-blue-500/20">
+                    Explore jobs
+                    <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================================================= -->
+    <!-- MODULAR FOOTER COMPONENT -->
+    <!-- ========================================================================= -->
+    <footer id="footer" class="bg-white border-t border-blue-100 pt-16 pb-12 mt-auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-100">
+          <!-- Brand Summary (2 cols) -->
+          <div class="lg:col-span-2 space-y-4">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
+                <i data-lucide="compass" class="w-5 h-5"></i>
+              </div>
+              <span class="text-2xl font-extrabold text-[#1E293B]">Career<span class="text-blue-600">Path</span></span>
+            </div>
+            <p class="text-sm text-slate-500 max-w-sm leading-relaxed">
+              The all-in-one student career acceleration platform. We bridge the gap between classroom theory and real-world tech recruitment standards.
+            </p>
+            <div class="flex items-center space-x-3 pt-2">
+              <a
+                href="#"
+                onclick="showToast('GitHub Community', 'Opening CareerPath Open Source repository', 'code-2')"
+                class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition shadow-sm"
+                aria-label="GitHub"
+              >
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                </svg>
+              </a>
+              <a
+                href="#"
+                onclick="showToast('LinkedIn Network', 'Opening CareerPath student alumni network', 'share-2')"
+                class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition shadow-sm"
+                aria-label="LinkedIn"
+              >
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0-.02-3.28 1.64 1.64 0 0 0 .02 3.28M5.07 18.5h2.78v-8.37H5.07v8.37z"/>
+                </svg>
+              </a>
+              <a
+                href="#"
+                onclick="showToast('Twitter / X', 'Follow @CareerPathHQ for tech hiring updates', 'send')"
+                class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition shadow-sm"
+                aria-label="Twitter"
+              >
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a
+                href="#"
+                onclick="showToast('Discord Community', 'Connecting to 18,000+ student developers', 'message-circle')"
+                class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition shadow-sm"
+                aria-label="Discord"
+              >
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.893.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Placement Newsletter Form -->
+            <div class="pt-2">
+              <p class="text-xs font-bold text-slate-700 mb-2">Subscribe to Placement Alerts</p>
+              <form onsubmit="event.preventDefault(); showToast('Subscribed!', 'You will receive weekly internship and placement alerts.', 'mail');" class="flex items-center space-x-2 max-w-sm">
+                <input type="email" required placeholder="Enter student email..." class="flex-1 px-3.5 py-2 text-xs rounded-xl border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-50" />
+                <button type="submit" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-md shadow-blue-500/20 transition">
+                  Join
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Links Column 1: Platform Modules -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800">
+              Platform Modules
+            </h4>
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li>
+                <a href="index.html#career-paths" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Career Paths</span>
+                </a>
+              </li>
+              <li>
+                <a href="career_explorer.html" class="hover:text-blue-600 transition flex items-center font-medium text-blue-600">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-blue-500"></i>
+                  <span>Career Explorer & Jobs</span>
+                </a>
+              </li>
+              <li>
+                <a href="roadmap.html" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Learning Roadmaps</span>
+                </a>
+              </li>
+              <li>
+                <a href="quiz/index.html" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Practice Quiz</span>
+                </a>
+              </li>
+              <li>
+                <a href="index.html#projects" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Portfolio Projects</span>
+                </a>
+              </li>
+              <li>
+                <a href="index.html#resume-analyzer" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Resume Analyzer</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Links Column 2: Popular Career Tracks -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800">
+              Career Tracks
+            </h4>
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li>
+                <a href="dashboard.html" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Full Stack Web Dev</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>AI & Machine Learning</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Cloud & DevOps</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Data Science & SQL</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Mobile App Dev</span>
+                </a>
+              </li>
+              <li>
+                <a href="dashboard.html" class="hover:text-blue-600 transition flex items-center">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Cybersecurity Track</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Links Column 3: Student Resources -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800">
+              Student Resources
+            </h4>
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li>
+                <a href="dashboard.html" class="hover:text-blue-600 transition flex items-center font-semibold text-blue-600">
+                  <i data-lucide="layout-dashboard" class="w-3.5 h-3.5 mr-1 text-blue-500"></i>
+                  <span>Student Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="career_explorer.html"
+                  class="hover:text-blue-600 transition flex items-center"
+                >
+                  <i data-lucide="briefcase" class="w-3.5 h-3.5 mr-1 text-blue-500"></i>
+                  <span>Internship & Job Portal</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="career_tips.html"
+                  class="hover:text-blue-600 transition flex items-center"
+                >
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5 mr-1 text-blue-500"></i>
+                  <span>Career Tips & Guides</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  onclick="showToast('College Placement', 'College verification portal opened', 'graduation-cap')"
+                  class="hover:text-blue-600 transition flex items-center"
+                >
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Campus Placements</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  onclick="showToast('Community', 'Welcome to the CareerPath student Discord community', 'users')"
+                  class="hover:text-blue-600 transition flex items-center"
+                >
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 mr-1 text-slate-400"></i>
+                  <span>Student Community</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Copyright & Bottom Credit -->
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+          <p>
+            &copy; 2026 CareerPath Inc. All rights reserved. Built for student career readiness.
+          </p>
+          <div class="flex items-center space-x-6">
+            <a href="#" onclick="showToast('Legal', 'CareerPath Privacy Policy')" class="hover:text-blue-600">Privacy Policy</a>
+            <a href="#" onclick="showToast('Legal', 'CareerPath Terms of Service')" class="hover:text-blue-600">Terms of Service</a>
+            <a href="#" onclick="showToast('Security', 'Enterprise-grade encryption for student data')" class="hover:text-blue-600">Security</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300">
+      <div class="bg-white border border-blue-200 rounded-2xl shadow-2xl p-4 flex items-center space-x-3.5 max-w-sm">
+        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
+          <i id="toast-icon" data-lucide="bell" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h4 id="toast-title" class="text-xs font-extrabold text-[#1E293B]">Notification</h4>
+          <p id="toast-msg" class="text-[11px] text-slate-600 mt-0.5">Operation completed successfully.</p>
+        </div>
+        <button onclick="document.getElementById('toast').classList.add('translate-y-24', 'opacity-0', 'pointer-events-none')" class="text-slate-400 hover:text-slate-600 p-1" aria-label="Close notification">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+
+    <script>
+        let toastTimeout;
+        function showToast(title, message, iconName = "bell") {
+            const toast = document.getElementById("toast");
+            if (!toast) return;
+
+            const toastTitle = document.getElementById("toast-title");
+            const toastMsg = document.getElementById("toast-msg");
+            const toastIcon = document.getElementById("toast-icon");
+
+            if (toastTitle) toastTitle.textContent = title;
+            if (toastMsg) toastMsg.textContent = message;
+            if (toastIcon) toastIcon.setAttribute("data-lucide", iconName);
+
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toast.classList.remove("translate-y-24", "opacity-0", "pointer-events-none");
+            toast.classList.add("translate-y-0", "opacity-100");
+
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove("translate-y-0", "opacity-100");
+                toast.classList.add("translate-y-24", "opacity-0", "pointer-events-none");
+            }, 3500);
+        }
+
+        lucide.createIcons();
+    </script>
+
+</body>
+</html>
