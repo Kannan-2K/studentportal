@@ -657,3 +657,137 @@ if (savedNavBtn) {
 
 // Initial page render
 renderJobs();
+
+
+// Mobile Navigation Menu Controller
+function initMobileMenu() {
+  const toggleBtn = document.getElementById("mobile-menu-toggle");
+  let mobileMenu = document.getElementById("mobile-menu");
+  const closeBtn = document.getElementById("mobile-menu-close");
+  const backdrop = document.getElementById("mobile-menu-backdrop");
+  const drawer = document.getElementById("mobile-menu-drawer");
+  const mobileLinks = document.querySelectorAll(".mobile-nav-link");
+
+  if (!toggleBtn || !mobileMenu) return;
+
+  if (mobileMenu.parentElement && mobileMenu.parentElement.tagName === "NAV") {
+    document.body.appendChild(mobileMenu);
+  }
+
+  let isOpen = false;
+
+  function openMenu() {
+    if (isOpen) return;
+    isOpen = true;
+
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+
+    mobileMenu.classList.remove("hidden");
+    mobileMenu.classList.add("active");
+    toggleBtn.setAttribute("aria-expanded", "true");
+    document.body.classList.add("overflow-hidden");
+    document.documentElement.classList.add("overflow-hidden");
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (backdrop) {
+          backdrop.classList.remove("opacity-0");
+          backdrop.classList.add("opacity-100");
+        }
+        if (drawer) {
+          drawer.classList.remove("translate-x-full");
+          drawer.classList.add("translate-x-0");
+        }
+      });
+    });
+  }
+
+  function closeMenu() {
+    if (!isOpen) {
+      mobileMenu.classList.remove("active");
+    mobileMenu.classList.add("hidden");
+      document.body.classList.remove("overflow-hidden");
+      document.documentElement.classList.remove("overflow-hidden");
+      return;
+    }
+    isOpen = false;
+    toggleBtn.setAttribute("aria-expanded", "false");
+
+    if (backdrop) {
+      backdrop.classList.remove("opacity-100");
+      backdrop.classList.add("opacity-0");
+    }
+    if (drawer) {
+      drawer.classList.remove("translate-x-0");
+      drawer.classList.add("translate-x-full");
+    }
+
+    setTimeout(() => {
+      if (!isOpen) {
+        mobileMenu.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+        document.documentElement.classList.remove("overflow-hidden");
+      }
+    }, 300);
+  }
+
+  toggleBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (isOpen) closeMenu();
+    else openMenu();
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      closeMenu();
+    });
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener("click", () => closeMenu());
+  }
+  mobileMenu.addEventListener("click", (e) => {
+    if (e.target === mobileMenu) closeMenu();
+  });
+
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => closeMenu());
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isOpen) closeMenu();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768 && isOpen) closeMenu();
+  });
+}
+
+initMobileMenu();
+
+
+// Mobile Filter Sidebar Toggle Controller
+const filterSidebarToggle = document.getElementById("filter-sidebar-toggle");
+const filterSidebar = document.getElementById("filter-sidebar");
+const filterToggleText = document.getElementById("filter-toggle-text");
+const filterToggleIcon = document.getElementById("filter-toggle-icon");
+
+if (filterSidebarToggle && filterSidebar) {
+  filterSidebarToggle.addEventListener("click", () => {
+    const isHidden = filterSidebar.classList.contains("hidden");
+    if (isHidden) {
+      filterSidebar.classList.remove("hidden");
+      filterSidebarToggle.setAttribute("aria-expanded", "true");
+      if (filterToggleText) filterToggleText.textContent = "Hide filters";
+      if (filterToggleIcon) filterToggleIcon.classList.add("rotate-180");
+    } else {
+      filterSidebar.classList.add("hidden");
+      filterSidebarToggle.setAttribute("aria-expanded", "false");
+      if (filterToggleText) filterToggleText.textContent = "Show filters";
+      if (filterToggleIcon) filterToggleIcon.classList.remove("rotate-180");
+    }
+  });
+}

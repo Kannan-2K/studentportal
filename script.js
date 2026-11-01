@@ -223,34 +223,123 @@ function initNavbarScroll() {
 }
 
 /* ----------------------------------------------------
- * Mobile Hamburger Menu Toggle
+ * Mobile Hamburger Menu Toggle & Sidebar Drawer Controller
  * ---------------------------------------------------- */
 function initMobileMenu() {
   const toggleBtn = document.getElementById("mobile-menu-toggle");
-  const mobileMenu = document.getElementById("mobile-menu");
+  let mobileMenu = document.getElementById("mobile-menu");
   const closeBtn = document.getElementById("mobile-menu-close");
+  const backdrop = document.getElementById("mobile-menu-backdrop");
+  const drawer = document.getElementById("mobile-menu-drawer");
   const mobileLinks = document.querySelectorAll(".mobile-nav-link");
 
   if (!toggleBtn || !mobileMenu) return;
 
+  // Defensive: Move mobileMenu out of <header> if nested, preventing backdrop-filter trapping
+  if (mobileMenu.parentElement && (mobileMenu.parentElement.tagName === "HEADER" || mobileMenu.parentElement.tagName === "NAV")) {
+    document.body.appendChild(mobileMenu);
+  }
+
+  let isOpen = false;
+
   function openMenu() {
+    if (isOpen) return;
+    isOpen = true;
+
+    // Refresh icons inside drawer if needed
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+
     mobileMenu.classList.remove("hidden");
+    mobileMenu.classList.add("active");
+    toggleBtn.setAttribute("aria-expanded", "true");
     document.body.classList.add("overflow-hidden");
+    document.documentElement.classList.add("overflow-hidden");
+
+    if (backdrop) {
+      backdrop.classList.remove("opacity-0");
+      backdrop.classList.add("opacity-100");
+    }
+    if (drawer) {
+      drawer.classList.remove("translate-x-full");
+      drawer.classList.add("translate-x-0");
+    }
   }
 
   function closeMenu() {
-    mobileMenu.classList.add("hidden");
+    if (!isOpen) return;
+    isOpen = false;
+
+    toggleBtn.setAttribute("aria-expanded", "false");
+    mobileMenu.classList.remove("active");
+
+    if (backdrop) {
+      backdrop.classList.remove("opacity-100");
+      backdrop.classList.add("opacity-0");
+    }
+    if (drawer) {
+      drawer.classList.remove("translate-x-0");
+      drawer.classList.add("translate-x-full");
+    }
+
     document.body.classList.remove("overflow-hidden");
+    document.documentElement.classList.remove("overflow-hidden");
+
+    setTimeout(() => {
+      if (!isOpen) {
+        mobileMenu.classList.add("hidden");
+      }
+    }, 300);
   }
 
-  toggleBtn.addEventListener("click", openMenu);
-  if (closeBtn) closeBtn.addEventListener("click", closeMenu);
+  toggleBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
 
-  mobileLinks.forEach(link => {
+  if (closeBtn) {
+    closeBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeMenu();
+    });
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener("click", () => closeMenu());
+  }
+  mobileMenu.addEventListener("click", (e) => {
+    if (e.target === mobileMenu) {
+      closeMenu();
+    }
+  });
+
+  mobileLinks.forEach((link) => {
     link.addEventListener("click", () => {
       closeMenu();
     });
   });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isOpen) {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 1280 && isOpen) {
+      closeMenu();
+    }
+  });
+
+  window.closeMobileMenu = closeMenu;
+  window.openMobileMenu = openMenu;
 }
 
 /* ----------------------------------------------------
@@ -547,8 +636,8 @@ function initModals() {
     }
   }
 
-  loginBtns.forEach((btn) => btn.addEventListener("click", () => openModal("login")));
-  signupBtns.forEach((btn) => btn.addEventListener("click", () => openModal("signup")));
+  loginBtns.forEach((btn) => btn.addEventListener("click", () => { if (window.closeMobileMenu) window.closeMobileMenu(); openModal("login"); }));
+  signupBtns.forEach((btn) => btn.addEventListener("click", () => { if (window.closeMobileMenu) window.closeMobileMenu(); openModal("signup"); }));
 
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
   if (modalBackdrop) modalBackdrop.addEventListener("click", closeModal);
@@ -679,8 +768,17 @@ async function loadComponent(elementId, componentUrl) {
     const htmlText = await response.text();
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlText, "text/html");
-    const componentContent = doc.querySelector("header#navbar, footer#footer") || doc.body;
-    container.innerHTML = componentContent.outerHTML;
+    const navbarEl = doc.querySelector("header#navbar, footer#footer") || doc.body;
+    container.innerHTML = navbarEl.outerHTML;
+
+    // Attach mobile menu to document.body if present in loaded component
+    const mobileMenuEl = doc.querySelector("#mobile-menu");
+    if (mobileMenuEl) {
+      const existing = document.getElementById("mobile-menu");
+      if (existing) existing.remove();
+      document.body.appendChild(mobileMenuEl);
+    }
+
     if (window.lucide) window.lucide.createIcons();
     initNavbarScroll();
     initMobileMenu();
