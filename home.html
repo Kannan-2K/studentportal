@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CareerPath | Student Career Preparation Platform (Home)</title>
+    <title>CareerPath | Student Career Preparation Platform</title>
     <meta
       name="description"
       content="Learn essential skills, practice coding, build projects, improve your resume, and prepare for your dream job—all in one platform."
@@ -66,7 +66,7 @@
         <div class="flex items-center justify-between h-20">
           <!-- Brand Logo & Name -->
           <a
-            href="home.html"
+            href="index.html"
             class="flex items-center space-x-3 group focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-xl p-1"
             aria-label="CareerPath Home"
           >
@@ -97,39 +97,46 @@
             aria-label="Main Navigation"
           >
             <a
-              href="home.html"
-              class="desktop-nav-link nav-link px-3.5 py-2 rounded-xl text-sm font-semibold text-blue-600 bg-blue-50/80 border border-blue-100 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+              href="index.html"
+              class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-semibold text-blue-600 bg-blue-50/80 border border-blue-100 hover:text-blue-600 hover:bg-blue-50 transition-colors"
               >Home</a
             >
             <a
               href="#career-paths"
-              class="desktop-nav-link nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
               >Career Paths</a
             >
             <a
-              href="#learn-skills"
-              class="desktop-nav-link nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
-              >Learn Skills</a
+              href="career_explorer.html"
+              class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors flex items-center space-x-1"
+            >
+              <span>Explore Jobs</span>
+              <span class="px-1.5 py-0.5 text-[9px] font-bold uppercase bg-blue-100 text-blue-700 rounded-full">New</span>
+            </a>
+            <a
+              href="roadmap.html"
+              class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Roadmaps</a
             >
             <a
-              href="#practice"
-              class="desktop-nav-link nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
-              >Practice</a
+              href="task.html"
+              class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Tasks</a
+            >
+            <a
+              href="quiz/index.html"
+              class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Practice Quiz</a
             >
             <a
               href="#projects"
-              class="desktop-nav-link nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
               >Projects</a
             >
             <a
               href="#resume-analyzer"
-              class="desktop-nav-link nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
-              >Resume Analyzer</a
-            >
-            <a
-              href="#interview-prep"
-              class="desktop-nav-link nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
-              >Interview Prep</a
+              class="desktop-nav-link nav-link px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50/70 transition-colors"
+              >Resume AI</a
             >
             <a
               href="dashboard.html"
@@ -143,7 +150,7 @@
           <!-- Medium Screen Nav dropdown / Compact view -->
           <div class="hidden lg:flex xl:hidden items-center space-x-2">
             <a
-              href="home.html"
+              href="index.html"
               class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-200"
               >Home</a
             >
@@ -153,14 +160,19 @@
               >Paths</a
             >
             <a
-              href="#learn-skills"
+              href="roadmap.html"
               class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50"
-              >Skills</a
+              >Roadmaps</a
             >
             <a
-              href="#projects"
+              href="task.html"
               class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50"
-              >Projects</a
+              >Tasks</a
+            >
+            <a
+              href="quiz/index.html"
+              class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-blue-600 hover:bg-blue-50"
+              >Quiz</a
             >
             <a
               href="dashboard.html"
@@ -199,135 +211,156 @@
               type="button"
               class="p-2.5 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-blue-50 border border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
               aria-label="Open Navigation Menu"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
             >
               <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
           </div>
         </div>
       </div>
+    </header>
 
-      <!-- Responsive Mobile Hamburger Drawer -->
+    <!-- Responsive Mobile Hamburger Drawer -->
+    <div
+      id="mobile-menu"
+      class="hidden xl:hidden fixed inset-0 z-50 transition-all duration-300"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Mobile Navigation Menu"
+    >
+      <!-- Backdrop Dimmer Overlay -->
       <div
-        id="mobile-menu"
-        class="hidden xl:hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm transition-opacity"
-        role="dialog"
-        aria-modal="true"
+        id="mobile-menu-backdrop"
+        class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm transition-opacity duration-300 opacity-0"
+      ></div>
+
+      <!-- Sliding Navigation Drawer Panel -->
+      <div
+        id="mobile-menu-drawer"
+        class="fixed inset-y-0 right-0 max-w-xs sm:max-w-sm w-full bg-white shadow-2xl p-6 flex flex-col justify-between overflow-y-auto border-l border-blue-100 z-10 transform translate-x-full transition-transform duration-300 ease-in-out"
       >
-        <div
-          class="fixed inset-y-0 right-0 max-w-xs w-full bg-white shadow-2xl p-6 flex flex-col justify-between overflow-y-auto border-l border-blue-100"
-        >
-          <div>
-            <!-- Header in drawer -->
-            <div
-              class="flex items-center justify-between pb-5 border-b border-blue-100"
-            >
-              <div class="flex items-center space-x-2">
-                <div
-                  class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white"
-                >
-                  <i data-lucide="compass" class="w-5 h-5"></i>
-                </div>
-                <span class="text-lg font-bold text-slate-800"
-                  >Career<span class="text-blue-600">Path</span></span
-                >
+        <div>
+          <!-- Header in drawer -->
+          <div class="flex items-center justify-between pb-5 border-b border-blue-100">
+            <a href="index.html" class="flex items-center space-x-2.5">
+              <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-blue-500 to-sky-400 flex items-center justify-center text-white shadow-sm">
+                <i data-lucide="compass" class="w-5 h-5"></i>
               </div>
-              <button
-                id="mobile-menu-close"
-                class="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100"
-                aria-label="Close menu"
-              >
-                <i data-lucide="x" class="w-5 h-5"></i>
-              </button>
-            </div>
-
-            <!-- Nav list -->
-            <nav class="mt-6 flex flex-col space-y-1.5">
-              <a
-                href="home.html"
-                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-blue-600 bg-blue-50 font-semibold border border-blue-200 transition"
-              >
-                <i data-lucide="home" class="w-4 h-4 text-blue-600"></i>
-                <span>Home</span>
-              </a>
-              <a
-                href="#career-paths"
-                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
-              >
-                <i data-lucide="map" class="w-4 h-4 text-blue-500"></i>
-                <span>Career Paths</span>
-              </a>
-              <a
-                href="#learn-skills"
-                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
-              >
-                <i data-lucide="book-open" class="w-4 h-4 text-blue-500"></i>
-                <span>Learn Skills</span>
-              </a>
-              <a
-                href="#practice"
-                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
-              >
-                <i data-lucide="code-2" class="w-4 h-4 text-blue-500"></i>
-                <span>Practice Coding</span>
-              </a>
-              <a
-                href="#projects"
-                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
-              >
-                <i data-lucide="folder-git-2" class="w-4 h-4 text-blue-500"></i>
-                <span>Projects</span>
-              </a>
-              <a
-                href="#resume-analyzer"
-                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
-              >
-                <i data-lucide="file-check" class="w-4 h-4 text-blue-500"></i>
-                <span>Resume Analyzer</span>
-              </a>
-              <a
-                href="#interview-prep"
-                class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
-              >
-                <i
-                  data-lucide="messages-square"
-                  class="w-4 h-4 text-blue-500"
-                ></i>
-                <span>Interview Prep</span>
-              </a>
-              <a
-                href="dashboard.html"
-                class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
-              >
-                <div class="flex items-center space-x-3">
-                  <i
-                    data-lucide="layout-dashboard"
-                    class="w-4 h-4 text-blue-600"
-                  ></i>
-                  <span>Student Dashboard</span>
-                </div>
-                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-              </a>
-            </nav>
-          </div>
-
-          <!-- Auth buttons in drawer -->
-          <div class="pt-6 border-t border-blue-100 flex flex-col space-y-3">
+              <div class="flex flex-col">
+                <span class="text-base font-extrabold text-slate-800 leading-tight">Career<span class="text-blue-600">Path</span></span>
+                <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Student Portal</span>
+              </div>
+            </a>
             <button
+              id="mobile-menu-close"
               type="button"
-              class="btn-trigger-login w-full py-2.5 text-center font-semibold text-slate-700 border border-blue-200 rounded-xl hover:bg-blue-50"
+              class="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 border border-slate-100 transition focus:outline-none focus:ring-2 focus:ring-blue-400"
+              aria-label="Close menu"
             >
-              Log In
-            </button>
-            <button
-              type="button"
-              class="btn-trigger-signup w-full py-2.5 text-center font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-md shadow-blue-500/20"
-            >
-              Sign Up Free
+              <i data-lucide="x" class="w-5 h-5"></i>
             </button>
           </div>
+
+          <!-- Nav list -->
+          <nav class="mt-5 flex flex-col space-y-1" aria-label="Mobile Navigation">
+            <a
+              href="index.html"
+              class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-blue-600 bg-blue-50 font-semibold border border-blue-200 transition"
+            >
+              <i data-lucide="home" class="w-4 h-4 text-blue-600"></i>
+              <span>Home</span>
+            </a>
+            <a
+              href="#career-paths"
+              class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+            >
+              <i data-lucide="map" class="w-4 h-4 text-blue-500"></i>
+              <span>Career Paths</span>
+            </a>
+            <a
+              href="career_explorer.html"
+              class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition justify-between"
+            >
+              <div class="flex items-center space-x-3">
+                <i data-lucide="briefcase" class="w-4 h-4 text-blue-500"></i>
+                <span>Explore Jobs</span>
+              </div>
+              <span class="px-1.5 py-0.5 text-[9px] font-bold uppercase bg-blue-100 text-blue-700 rounded-full">New</span>
+            </a>
+            <a
+              href="roadmap.html"
+              class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+            >
+              <i data-lucide="milestone" class="w-4 h-4 text-blue-500"></i>
+              <span>Learning Roadmaps</span>
+            </a>
+            <a
+              href="task.html"
+              class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+            >
+              <i data-lucide="check-square" class="w-4 h-4 text-blue-500"></i>
+              <span>Learning Tasks</span>
+            </a>
+            <a
+              href="quiz/index.html"
+              class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+            >
+              <i data-lucide="help-circle" class="w-4 h-4 text-blue-500"></i>
+              <span>Practice Quizzes</span>
+            </a>
+            <a
+              href="#projects"
+              class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+            >
+              <i data-lucide="folder-git-2" class="w-4 h-4 text-blue-500"></i>
+              <span>Projects</span>
+            </a>
+            <a
+              href="#resume-analyzer"
+              class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+            >
+              <i data-lucide="file-check" class="w-4 h-4 text-blue-500"></i>
+              <span>Resume Analyzer</span>
+            </a>
+            <a
+              href="#interview-prep"
+              class="mobile-nav-link flex items-center space-x-3 px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+            >
+              <i data-lucide="messages-square" class="w-4 h-4 text-blue-500"></i>
+              <span>Interview Prep</span>
+            </a>
+            <a
+              href="dashboard.html"
+              class="mobile-nav-link flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-600 transition"
+            >
+              <div class="flex items-center space-x-3">
+                <i data-lucide="layout-dashboard" class="w-4 h-4 text-blue-600"></i>
+                <span>Student Dashboard</span>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            </a>
+          </nav>
+        </div>
+
+        <!-- Auth buttons in drawer -->
+        <div class="pt-5 border-t border-blue-100 flex flex-col space-y-2.5">
+          <button
+            type="button"
+            class="btn-trigger-login w-full py-2.5 text-center text-sm font-semibold text-slate-700 border border-blue-200 rounded-xl hover:bg-blue-50 transition"
+          >
+            Log In
+          </button>
+          <button
+            type="button"
+            class="btn-trigger-signup w-full py-2.5 text-center text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-md shadow-blue-500/20 transition flex items-center justify-center space-x-2"
+          >
+            <span>Sign Up Free</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
         </div>
       </div>
-    </header>
+    </div>
 
     <!-- ========================================================================= -->
     <!-- 2. HERO SECTION -->
@@ -626,16 +659,30 @@
                 </li>
               </ul>
             </div>
-            <div class="pt-6 mt-6 border-t border-slate-100">
+            <div class="pt-6 mt-6 border-t border-slate-100 flex flex-wrap items-center gap-4">
               <a
-                href="dashboard.html"
+                href="career_explorer.html"
                 class="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-700 group/link"
               >
-                <span>Explore Tracks in Dashboard</span>
+                <span>Explore Jobs & Openings</span>
                 <i
                   data-lucide="arrow-right"
                   class="w-4 h-4 ml-1.5 group-hover/link:translate-x-1 transition-transform"
                 ></i>
+              </a>
+              <span class="text-slate-300">•</span>
+              <a
+                href="roadmap.html"
+                class="inline-flex items-center text-sm font-medium text-slate-600 hover:text-blue-600 group/link"
+              >
+                <span>Roadmaps</span>
+              </a>
+              <span class="text-slate-300">•</span>
+              <a
+                href="dashboard.html"
+                class="inline-flex items-center text-sm font-medium text-slate-600 hover:text-blue-600 group/link"
+              >
+                <span>Dashboard</span>
               </a>
             </div>
           </article>
@@ -692,24 +739,36 @@
                 </li>
               </ul>
             </div>
-            <div class="pt-6 mt-6 border-t border-slate-100">
-              <button
-                type="button"
-                onclick="
-                  showToast(
-                    'Learn Skills',
-                    'Opening interactive catalog with 40+ student modules',
-                    'book-open',
-                  )
-                "
+            <div class="pt-6 mt-6 border-t border-slate-100 flex flex-wrap items-center gap-4">
+              <a
+                href="task.html"
                 class="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-700 group/link"
               >
-                <span>Browse Skill Catalog</span>
+                <span>Start Learning Tasks</span>
                 <i
                   data-lucide="arrow-right"
                   class="w-4 h-4 ml-1.5 group-hover/link:translate-x-1 transition-transform"
                 ></i>
-              </button>
+              </a>
+              <span class="text-slate-300">•</span>
+              <a
+                href="taskcss.html"
+                class="inline-flex items-center text-xs font-medium text-slate-500 hover:text-blue-600"
+              >
+                CSS
+              </a>
+              <a
+                href="tasktail.html"
+                class="inline-flex items-center text-xs font-medium text-slate-500 hover:text-blue-600"
+              >
+                Tailwind
+              </a>
+              <a
+                href="taskjs.html"
+                class="inline-flex items-center text-xs font-medium text-slate-500 hover:text-blue-600"
+              >
+                JS
+              </a>
             </div>
           </article>
 
@@ -734,12 +793,11 @@
               <h3
                 class="text-xl font-bold text-[#1E293B] group-hover:text-blue-600 transition-colors"
               >
-                Hands-On Code Practice
+                Hands-On Code Practice & Quizzes
               </h3>
               <p class="text-slate-600 text-sm mt-2.5 leading-relaxed">
                 Ace data structures, algorithms, and SQL with curated coding
-                challenges categorized by company tags (Google, Amazon,
-                Microsoft).
+                challenges and topic-wise interactive quizzes with real-time score tracking.
               </p>
               <ul class="mt-4 space-y-2 text-xs text-slate-600">
                 <li class="flex items-center">
@@ -754,7 +812,7 @@
                     data-lucide="check"
                     class="w-3.5 h-3.5 text-emerald-500 mr-2"
                   ></i>
-                  Step-by-step algorithmic visualizations
+                  60+ topic quizzes across Frontend, Backend & AI
                 </li>
                 <li class="flex items-center">
                   <i
@@ -765,24 +823,17 @@
                 </li>
               </ul>
             </div>
-            <div class="pt-6 mt-6 border-t border-slate-100">
-              <button
-                type="button"
-                onclick="
-                  showToast(
-                    'Practice Arena',
-                    'Launching coding sandbox with daily DSA challenge',
-                    'terminal',
-                  )
-                "
+            <div class="pt-6 mt-6 border-t border-slate-100 flex flex-wrap items-center gap-4">
+              <a
+                href="quiz/index.html"
                 class="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-700 group/link"
               >
-                <span>Start Daily Challenge</span>
+                <span>Launch Practice Quizzes</span>
                 <i
                   data-lucide="arrow-right"
                   class="w-4 h-4 ml-1.5 group-hover/link:translate-x-1 transition-transform"
                 ></i>
-              </button>
+              </a>
             </div>
           </article>
 
@@ -1417,13 +1468,18 @@
                 >
               </li>
               <li>
-                <a href="#learn-skills" class="hover:text-blue-600 transition"
-                  >Learn Skills</a
+                <a href="roadmap.html" class="hover:text-blue-600 transition"
+                  >Learning Roadmaps</a
                 >
               </li>
               <li>
-                <a href="#practice" class="hover:text-blue-600 transition"
-                  >Coding Practice</a
+                <a href="task.html" class="hover:text-blue-600 transition"
+                  >Skill Tasks (HTML/CSS/JS)</a
+                >
+              </li>
+              <li>
+                <a href="quiz/index.html" class="hover:text-blue-600 transition"
+                  >Practice Quizzes</a
                 >
               </li>
               <li>
